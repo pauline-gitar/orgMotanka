@@ -6,6 +6,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 class ProductFixture extends Fixture
@@ -81,5 +82,6 @@ class ProductFixture extends Fixture
             ->setSlug('panier-en-osier')
             ->setSpotlight(1);
         $manager->persist($product);
+        $manager->flush();
     }
 }
