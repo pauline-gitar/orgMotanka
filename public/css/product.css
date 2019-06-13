@@ -1,0 +1,27 @@
+:root{
+    --grisclair:rgb(224, 218, 206);
+    --beige:#CA9D66;
+    --rouge:#A7413F;}
+
+/* PAGE PRODUITS */
+.cardProd{
+    padding-bottom: 20px;
+}
+
+img {
+    object-fit: cover;
+    object-position: 0px;
+    height: 300px;
+}
+.card-body{
+    height:206px;
+}
+.btn-default {
+    color: #fff;
+    background-color: #CA9D66;
+    border-color: #CA9D66;
+}
+/* PAGE PRODUIT DETAIL */
+.cont1{
+    height:400px;
+}

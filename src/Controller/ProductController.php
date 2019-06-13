@@ -23,4 +23,19 @@ class ProductController extends AbstractController
             'products' => $products,
         ]);
     }
+
+    /**
+     * @Route("/product/product_details", name="product_details")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewProductDetails()
+    {
+        $id = $this->getDoctrine();
+        $product = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->find("1");
+        return $this->render('/default/product_details.html.twig', [
+            'product' => $product,
+        ]);
+    }
 }
