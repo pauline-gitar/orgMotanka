@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -17,22 +18,34 @@ class Product
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Vous devez saisir un titre.")
+     * @Assert\Length(
+     *     max="255",
+     *     maxMessage="Votre titre ne doit pas depasser {{ limit }} caracteres."
+     * )
      * @ORM\Column(type="string", length=200)
      */
     private $title;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Vous devez saisir un prix.")
      */
     private $price;
 
     /**
+     * @Assert\NotBlank(message="Vous devez saisir une description.")
      * @ORM\Column(type="text")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Image(
+     *     mimeTypesMessage="Verifiez votre format d'image",
+     *     maxSize="1M",
+     *     maxSizeMessage="Image > 1mo"
+     * )
      */
     private $picture;
 
@@ -41,10 +54,7 @@ class Product
      */
     private $date_creation;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $id_seller;
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -55,6 +65,18 @@ class Product
      * @ORM\Column(type="boolean")
      */
     private $spotlight;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Seller", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $seller;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
 
     public function getId(): ?int
     {
@@ -97,7 +119,7 @@ class Product
         return $this;
     }
 
-    public function getPicture(): ?string
+    public function getPicture()
     {
         return $this->picture;
     }
@@ -121,17 +143,7 @@ class Product
         return $this;
     }
 
-    public function getIdSeller(): ?string
-    {
-        return $this->id_seller;
-    }
 
-    public function setIdSeller(string $id_seller): self
-    {
-        $this->id_seller = $id_seller;
-
-        return $this;
-    }
 
     public function getSlug(): ?string
     {
@@ -153,6 +165,30 @@ class Product
     public function setSpotlight(bool $spotlight): self
     {
         $this->spotlight = $spotlight;
+
+        return $this;
+    }
+
+    public function getSeller(): ?seller
+    {
+        return $this->seller;
+    }
+
+    public function setSeller(?seller $seller): self
+    {
+        $this->seller = $seller;
+
+        return $this;
+    }
+
+    public function getCategory(): ?category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

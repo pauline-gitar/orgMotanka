@@ -4,12 +4,14 @@
 namespace App\DataFixtures;
 
 
+use App\Entity\Category;
 use App\Entity\Product;
+use App\Entity\Seller;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class ProductFixture extends Fixture
+class ProductFixture extends Fixture implements DependentFixtureInterface
 {
 
     /**
@@ -20,6 +22,16 @@ class ProductFixture extends Fixture
     public function load(ObjectManager $manager)
     {
         // Product 1
+
+        //Recuperation de la categorie
+        $category = $manager->getRepository(Category::class)
+            ->findOneBy(['slug' => 'decoration']);
+
+        //Recuperation du vendeur
+        $seller = $manager->getRepository(Seller::class)
+            ->findOneBy(['id' => '0']);
+
+        //creation du produit
         $product = new Product();
         $product->setTitle('Tapis en laine')
             ->setPrice('20')
@@ -33,12 +45,23 @@ class ProductFixture extends Fixture
                                         Thank you for visiting!</p>')
             ->setPicture('tapis1.jpg')
             ->setDateCreation(new \DateTime())
-            ->setIdSeller('1')
+            ->setSeller($this->getReference(SellerFixtures::PRODUCT_SELLER_REFERENCE))
+            ->setCategory($this->getReference(CategoryFixture::PRODUCT_CATEGORY_REFERENCE))
             ->setSlug('tapis-en-laine')
             ->setSpotlight(1);
         $manager->persist($product);
 
         // Product 2
+
+        //Recuperation de la categorie
+        $category = $manager->getRepository(Category::class)
+            ->findOneBy(['slug' => 'toys']);
+
+        //Recuperation du vendeur
+        $seller = $manager->getRepository(Seller::class)
+            ->findOneBy(['id' => '1']);
+
+        //creation du produit
         $product = new Product();
         $product->setTitle('Jouet en laine pour chat')
             ->setPrice('5')
@@ -48,12 +71,23 @@ class ProductFixture extends Fixture
                                            deditšnihil dicam hoc loco de me; tantum sit, quantum vos existimatis;</p>')
             ->setPicture('jouet-chat.jpg')
             ->setDateCreation(new \DateTime())
-            ->setIdSeller('1')
+            ->setSeller($this->getReference(SellerFixtures::PRODUCT_SELLER_REFERENCE))
+            ->setCategory($this->getReference(CategoryFixture::PRODUCT_CATEGORY_REFERENCE))
             ->setSlug('jouet-chat')
             ->setSpotlight(1);
         $manager->persist($product);
 
         // Product 3
+
+        //Recuperation de la categorie
+        $category = $manager->getRepository(Category::class)
+            ->findOneBy(['slug' => 'decoration']);
+
+        //Recuperation du vendeur
+        $seller = $manager->getRepository(Seller::class)
+            ->findOneBy(['id' => '2']);
+
+        //creation du produit
         $product = new Product();
         $product->setTitle('Tapis en laine noir et blanc')
             ->setPrice('40')
@@ -63,12 +97,23 @@ class ProductFixture extends Fixture
                                            deditšnihil dicam hoc loco de me; tantum sit, quantum vos existimatis;</p>')
             ->setPicture('tapis-2.jpg')
             ->setDateCreation(new \DateTime())
-            ->setIdSeller('1')
+            ->setSeller($this->getReference(SellerFixtures::PRODUCT_SELLER_REFERENCE))
+            ->setCategory($this->getReference(CategoryFixture::PRODUCT_CATEGORY_REFERENCE))
             ->setSlug('tapis-en-laine-noir-et-blanc')
             ->setSpotlight(1);
         $manager->persist($product);
 
         // Product 4
+
+        //Recuperation de la categorie
+        $category = $manager->getRepository(Category::class)
+            ->findOneBy(['slug' => 'clothes']);
+
+        //Recuperation du vendeur
+        $seller = $manager->getRepository(Seller::class)
+            ->findOneBy(['id' => '2']);
+
+        //creation du produit
         $product = new Product();
         $product->setTitle('Panier en osier')
             ->setPrice('30')
@@ -78,10 +123,18 @@ class ProductFixture extends Fixture
                                            deditšnihil dicam hoc loco de me; tantum sit, quantum vos existimatis;</p>')
             ->setPicture('panier-1.jpg')
             ->setDateCreation(new \DateTime())
-            ->setIdSeller('1')
+            ->setSeller($this->getReference(SellerFixtures::PRODUCT_SELLER_REFERENCE))
+            ->setCategory($this->getReference(CategoryFixture::PRODUCT_CATEGORY_REFERENCE))
             ->setSlug('panier-en-osier')
             ->setSpotlight(1);
         $manager->persist($product);
         $manager->flush();
+    }
+    public function getDependencies()
+    {
+        return [
+            SellerFixtures::class,
+            CategoryFixture::class
+        ];
     }
 }
