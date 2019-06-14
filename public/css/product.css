@@ -11,16 +11,20 @@ body	{
     min-height: 100%;
 }
 /* PAGE PRODUITS */
+.white{
+    padding-top: 20px;
+}
 .cardProd{
     padding-bottom: 20px;
 }
 
-img {
+.card-img-top{
     object-fit: cover;
     object-position: 0px;
     height: 300px;
+
 }
-.card-body{
+.sizeCardBdy{
     height:206px;
 }
 .btn-default {
@@ -28,15 +32,29 @@ img {
     background-color: #CA9D66;
     border-color: #CA9D66;
 }
+.buttonsAlign{
+    display: flex;
+    justify-content: space-around;
+
+}
+
 /* PAGE PRODUCT DETAILS */
 
 .no-gutters{
     height:600px;
 }
-.card-img{
+
+.crd{
     height:600px;
-    margin-left: 200px;
+    width:500px;
 }
-.blockText{
-    padding-left: 200px;
+.crd > h5 {
+    font-size: 50px;
+}
+.crd > p {
+    font-size: 22px;
+}
+.btnDetails{
+    width: 280px;
+    height: 70px;
 }

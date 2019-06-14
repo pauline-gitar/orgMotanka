@@ -41,15 +41,18 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/product/product_details", name="product_details")
+     * @Route("/product/{slug<[a-zA-Z0-9\-_\/]+>}",
+     *     defaults={"slug"},
+     *     methods={"GET"},
+     *     name="product_details")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function viewProductDetails()
+    public function viewProductDetails($slug)
     {
         $id = $this->getDoctrine();
         $product = $this->getDoctrine()
             ->getRepository(Product::class)
-            ->find("1");
+            ->findOneBy(['slug' => $slug]);
         return $this->render('/default/product_details.html.twig', [
             'product' => $product,
         ]);
