@@ -2,13 +2,13 @@
 <div class="navbar">
 <ul class="nav d-flex align-items-center">
     <li class="nav-item">
-        <a class="nav-link active" href="#">Qui Sommes-nous ?</a>
+        <a class="nav-link active" href="{{ path('home') }}">Qui Sommes-nous ?</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Nos actions</a>
+        <a class="nav-link" href="{{ path('home') }}#nos-actions">Nos actions</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Le shop</a>
+        <a class="nav-link" href="{{ path('product') }}">Le shop</a>
     </li>
     <!-- mettre soit un sous menu, soit des options si le user est connecté -->
     <li class="nav-item dropdown col-sm">

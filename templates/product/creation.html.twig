@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"
           integrity="sha256-AWdeVMUYtwLH09F6ZHxNgvJI37p+te8hJuSMo44NVm0=" crossorigin="anonymous"/>
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/product_creation.css') }}">
 {% endblock %}
 
 {% block final_javascripts %}
@@ -17,7 +18,7 @@
             integrity="sha256-SUaao5Q7ifr2twwET0iyXVy0OVnuFJhGVi5E/dqEiLU=" crossorigin="anonymous"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
     <script>
-        ClassicEditor.create(document.querySelector('#form_contenu'));
+        ClassicEditor.create(document.querySelector('#form_description'));
         $('.dropify').dropify({
             messages: {
                 default: 'Glissez-d&eacute;posez un fichier ici ou cliquez',
@@ -31,17 +32,51 @@
 
 {% block content %}
     <div class="container">
-        <div class="row">
+        <div class="row display-inline-block">
             <div class="col-xs-8 col-xs-push-2">
-                            {% for message in app.flashes('notice') %}
-                                <div class="alert alert-success">
-                                    {{ message }}
-                                </div>
-                            {% endfor %}
-                <h3>Ajouter un produit</h3>
-                {{ form(form, {attr:{novalidate: 'novalidate' }}) }}
+                {% for message in app.flashes('notice') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                <h2>Ajouter un produit</h2>
+                {{ form_start(form, {attr:{novalidate: 'novalidate' }}) }}
+                <div class="row">
+                    <div class="col">
+                        {{ form_row(form.title) }}
+                    </div>
+                    <div class="col">
+                        {{ form_row(form.price) }}
+                    </div>
+                </div>
+                <div class="row">
+                    {{ form_row(form.description) }}
+                </div>
+                <div class="row display-inline-block">
+                    {{ form_row(form.picture) }}
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{ form_label(form.category,'Choix categorie') }}
+                        {{ form_row(form.category) }}
+                    </div>
+                    <div class="col">
+                        {{ form_label(form.category,'Choix vendeur') }}
+                        {{ form_row(form.seller) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{ form_row(form.spotlight) }}
+                    </div>
+                    <div class="col">
+                        {{ form_row(form.submit, {'attr': {'class': 'submitt'}}) }}
+                    </div>
+                </div>
             </div>
+
+            {{ form_end(form) }}
         </div>
     </div>
+    </div>
 {% endblock %}
-

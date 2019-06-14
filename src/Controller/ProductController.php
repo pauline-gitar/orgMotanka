@@ -117,7 +117,7 @@ class ProductController extends AbstractController
                 'label' => false
             ])
             ->add('submit', SubmitType::class,[
-                'label' => "Inscription"
+                'label' => "Valider"
             ])
             ->getForm();
         #Traitement des donnees POST
