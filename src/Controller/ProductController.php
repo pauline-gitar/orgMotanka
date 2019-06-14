@@ -41,6 +41,21 @@ class ProductController extends AbstractController
     }
 
     /**
+     * @Route("/product/product_details", name="product_details")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewProductDetails()
+    {
+        $id = $this->getDoctrine();
+        $product = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->find("1");
+        return $this->render('/default/product_details.html.twig', [
+            'product' => $product,
+        ]);
+    }
+
+    /**
      * @Route("/product/creation", name="product-creation")
      */
     public function createProduct(Request $request)
@@ -160,24 +175,6 @@ class ProductController extends AbstractController
 
         ]);
 
-
-
-
-
     }
 
-    /**
-     * @Route("/product/product_details", name="product_details")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function viewProductDetails()
-    {
-        $id = $this->getDoctrine();
-        $product = $this->getDoctrine()
-            ->getRepository(Product::class)
-            ->find("1");
-        return $this->render('/default/product_details.html.twig', [
-            'product' => $product,
-        ]);
-    }
 }
