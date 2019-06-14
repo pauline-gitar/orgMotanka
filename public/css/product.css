@@ -1,8 +1,15 @@
+*	{
+    box-sizing: border-box;
+}
 :root{
     --grisclair:rgb(224, 218, 206);
     --beige:#CA9D66;
-    --rouge:#A7413F;}
-
+    --rouge:#A7413F;
+    height: 100%;
+}
+body	{
+    min-height: 100%;
+}
 /* PAGE PRODUITS */
 .cardProd{
     padding-bottom: 20px;
@@ -21,7 +28,15 @@ img {
     background-color: #CA9D66;
     border-color: #CA9D66;
 }
-/* PAGE PRODUIT DETAIL */
-.cont1{
-    height:400px;
+/* PAGE PRODUCT DETAILS */
+
+.no-gutters{
+    height:600px;
+}
+.card-img{
+    height:600px;
+    margin-left: 200px;
+}
+.blockText{
+    padding-left: 200px;
 }

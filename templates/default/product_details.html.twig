@@ -6,18 +6,20 @@
 
 {% block content %}
     <div container>
-    <div class="card mb-3 cont1">
+    <div class="card mb-3">
         <div class="row no-gutters">
+
             <div class="col-md-4">
                 <img src="{{ asset('images/product/' ~ product.picture) }}" class="card-img" alt="{{ product.title }}">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-4 blockText">
                 <div class="card-body crd">
                     <h5 class="card-title">{{ product.title }}</h5>
                     <p class="card-text">{{ product.description | raw }}</p>
                     <a href="'/default/product_details.html.twig'" class="btn btn-default">Ajouter au panier</a>
                 </div>
             </div>
+
         </div>
     </div>
     </div>
