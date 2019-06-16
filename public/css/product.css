@@ -21,12 +21,13 @@ body	{
 .card-img-top{
     object-fit: cover;
     object-position: 0px;
-    height: 300px;
+    /*height: 300px;*/
 
 }
+/*
 .sizeCardBdy{
     height:206px;
-}
+}*/
 .btn-default {
     color: #fff;
     background-color: #CA9D66;
@@ -40,21 +41,19 @@ body	{
 
 /* PAGE PRODUCT DETAILS */
 
-.no-gutters{
+/*.no-gutters{
     height:600px;
 }
-
+/*
 .crd{
-    height:600px;
-    width:500px;
+    display: flex;
+    flex-direction: column;
 }
+*/
 .crd > h5 {
     font-size: 50px;
 }
 .crd > p {
     font-size: 22px;
 }
-.btnDetails{
-    width: 280px;
-    height: 70px;
-}
+
