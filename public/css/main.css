@@ -80,12 +80,12 @@ a:active { color: var(--grisclair) ; font-size: 1.1rem;}
     color: var(--rouge);
 }
 
-/*********************HEADER***********************/
+/*********************HEADER & MENU HEADER***********************/
 .home-header{
-    padding-top: 20px;
+    padding-top: 10px;
     background-color: var(--beige);
     color: var(--rouge);
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 #logo{
     width: 100px;
@@ -94,46 +94,79 @@ a:active { color: var(--grisclair) ; font-size: 1.1rem;}
     border: solid 10px white;
 }
 
+.home-header h1 {
+    margin-bottom: 0px;
+    float: left;
+    padding-right: 20px;
+}
 
+.header_flex {
+    display: flex;
+    flex-wrap: none;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo_flex {
+    display: flex;
+    flex-wrap: none;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.title_header {
+    vertical-align: middle;
+    margin: auto;
+}
+.flex_mnu_header{
+    vertical-align: middle;
+    align-content: stretch;
+    text-align: center;
+    margin:auto 0;
+}
+
+/*********************MEDIA QUERIES HEADER MENU***********************/
+@media (max-width: 860px) /*affichage tablette*/
+{
+
+}
+@media (max-width: 640px) /*affichage smartphone*/
+{
+    .header_flex {
+        flex-direction: column;
+    }
+    .logo_flex {
+        flex-direction: column;
+    }
+    .flex_mnu_header{
+        flex-direction: row;
+        margin:auto;
+    }
+    .flex_nav_mnu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+
+}
+
+/**********************NAV*****************************/
+.flex_nav_main {
+    background: white;
+    border-bottom: var(--rouge) 1px solid ;
+}
+.flex_nav {
+    padding: 0;
+}
+.flex_nav a:link {
+    color: var(--rouge) ; font-size: 1.1rem;
+}
+.flex_nav a:visited { color: #C9C9C9 ; font-size: 1.1rem;}
+.flex_nav a:hover { color: #C9C9C9 ; font-size: 1.1rem;}
+.flex_nav a:active { color: var(--rouge) ; font-size: 1.1rem;}
 
 /**********************MAIN****************************/
 
 .white {
     background-color: white;
-}
-
-/***********************MEDIA QUERIES********************************/
-
-@media screen and (max-width:767px) {
-
-    .header_min_media {
-        width: 100%;
-        display: none;
-    }
-    .identity_min_media {
-        display: unset; !important;
-    }
-    .home-header{
-        width: 100%;
-        padding-top: 10px;
-    }
-    #logo {
-        display: block; !important;
-    }
-    .title {
-        display: block; !important;
-    }
-    #mnu_media {
-        max-width: 390px;
-        display: block;
-        width: 100%;
-    }
-    .display_mnu_min_media{
-        display: initial;  !important;
-    }
-    .img-responsive {
-        display: block;
-        max-width: 100%;
-        height: auto;
-    }
 }

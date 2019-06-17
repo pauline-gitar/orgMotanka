@@ -1,17 +1,41 @@
 <header class="home-header">
-<div class="container d-flex align-items-center justify-content-between">
+    <div class="container">
+        <div class="header_flex">
 
-    <div class="row align-items-center">
-
-        <img src="{{ asset('images/logo_Motanka.png') }}" id="logo">
-        <div class="title">
-            <h1>Organisation <span class="text-uppercase">Motanka</span></h1>
-        </div>
-
-    </div>
-    {% include 'components/_nav.html.twig' %}
-</div> <!-- Fin de la div Container -->
+            <div class="logo_flex">
+                <div class="img_header">
+                    <img src="{{ asset('images/logo_Motanka.png') }}" id="logo">
+                </div>
+                <div class="title_header">
+                    <h1>Organisation <span class="text-uppercase">Motanka</span></h1>
+                </div>
+            </div> <!-- fin du logo flex-->
 
 
+        <div class="flex_mnu_header">
+            <div class="flex_nav_mnu">
+                <ul class="flex_nav_mnu">
+                    <li class="">
+                        <a class="nav-link active" href="#">Inscription</a>
+                    </li>
+
+                    <li class="nav-item dropdown col-sm">
+
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+                           href="#" role="button" aria-haspopup="true"
+                           aria-expanded="false">Connexion</a>
+                        <div class="dropdown-menu mnu_dropdown">
+                            <a class="dropdown-item" href="#">Deconnexion</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>  <!-- fin du flex_mnu_header-->
+
+        </div> <!-- fin du header flex-->
+
+    </div> <!-- fin de la div container -->
 </header> <!-- fin du Header -->
-<div class="container white">

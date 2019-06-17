@@ -12,9 +12,12 @@
 {% block body %}
 
     {% include 'components/_header.html.twig' %}
+    {% include 'components/_nav.html.twig' %}
+    <div class="container white"> <!-- Ouverture container div white Main -->
 
     {% block content '' %}
 
+    </div> <!-- FIN DIV white du Main -->
     {% include 'components/_footer.html.twig' %}
 {% endblock %}
 

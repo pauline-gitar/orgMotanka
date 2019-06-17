@@ -1,24 +1,18 @@
+<div class="container flex_nav">
 
-<div class="navbar">
-<ul class="nav d-flex align-items-center">
-    <li class="nav-item">
-        <a class="nav-link active" href="{{ path('home') }}">Qui Sommes-nous ?</a>
-    </li>
-    <li class="nav-item">
+<div class="flex_nav_main navbar">
+    <ul class="nav d-flex align-items-center">
+     <li class="nav-item">
+         <a class="nav-link active" href="{{ path('home') }}">Qui Sommes-nous ?</a>
+     </li>
+     <li class="nav-item">
         <a class="nav-link" href="{{ path('home') }}#nos-actions">Nos actions</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ path('product') }}">Le shop</a>
     </li>
     <!-- mettre soit un sous menu, soit des options si le user est connecté -->
-    <li class="nav-item dropdown col-sm">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
-        <div class="dropdown-menu mnu_dropdown">
-            <a class="dropdown-item" href="#">Inscription</a>
-            <a class="dropdown-item" href="#">Connexion</a>
-            <a class="dropdown-item" href="#">Deconnexion</a>
-        </div>
-    </li>
+
          <!--    Mise en attente
             <span id="btn_toogle">
         <ul class="sub-menu nav justify-content-end">
@@ -30,8 +24,8 @@
         -->
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i></a>
-    </li>
+
 </ul>
 </div>
+
+</div> <!-- fin de la div container -->
