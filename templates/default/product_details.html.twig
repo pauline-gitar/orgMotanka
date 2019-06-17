@@ -6,22 +6,21 @@
 
 {% block content %}
     <div container>
-    <div class="card mb-3">
-        <div class="row no-gutters">
-
-            <div class="col-md-6">
-                <a href="{{ asset('images/product/' ~ product.picture) }}"><img src="{{ asset('images/product/' ~ product.picture) }}" class="card-img" alt="{{ product.title }}"/></a>
-            </div>
-            <div class="col-md-4 blockText">
-                <div class="card-body crd">
-                    <h5 class="card-title">{{ product.title }}</h5>
-                    <p class="card-text">{{ product.description | raw }}</p>
-                    <p class="card-text"><b>{{ product.price ~ " Euros" | raw }}</b></p>
-                    <a href="" class="btn btn-default btn-lg">Ajouter au panier</a>
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    <a href="{{ asset('images/product/' ~ product.picture) }}"><img src="{{ asset('images/product/' ~ product.picture) }}" class="card-img" alt="{{ product.title }}"/></a>
+                </div>
+                <div class="col-md-4 blockText">
+                    <div class="card-body crd">
+                        <h5 class="card-title">{{ product.title }}</h5>
+                        <p class="card-text">{{ product.description | raw }}</p>
+                        <p class="card-text"><b>{{ product.price ~ " Euros" | raw }}</b></p>
+                        <a href="" class="btn btn-default btn-lg">Ajouter au panier</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 {% endblock %}
 
