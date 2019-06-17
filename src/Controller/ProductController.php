@@ -27,6 +27,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/product", name="product")
      */
+
     public function viewProduct()
     {
         /*
@@ -38,18 +39,18 @@ class ProductController extends AbstractController
         return $this->render('default/product.html.twig', [
             'products' => $products,
         ]);
-    }
+        }
 
     /**
      * @Route("/product/{slug<[a-zA-Z0-9\-_\/]+>}",
      *     defaults={"slug"},
      *     methods={"GET"},
      *     name="product_details")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function viewProductDetails($slug)
     {
-        $id = $this->getDoctrine();
+
         $product = $this->getDoctrine()
             ->getRepository(Product::class)
             ->findOneBy(['slug' => $slug]);
@@ -123,6 +124,9 @@ class ProductController extends AbstractController
                 'label' => "Inscription"
             ])
             ->getForm();
+
+
+
         #Traitement des donnees POST
         $form->handleRequest($request);
 
@@ -174,7 +178,7 @@ class ProductController extends AbstractController
 
         //transmission vue
         return $this->render('product/creation.html.twig',[
-            'form' => $form->createView()
+            'form' => $form->createView(),
 
         ]);
 

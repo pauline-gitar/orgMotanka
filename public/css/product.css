@@ -41,15 +41,6 @@ body	{
 
 /* PAGE PRODUCT DETAILS */
 
-/*.no-gutters{
-    height:600px;
-}
-/*
-.crd{
-    display: flex;
-    flex-direction: column;
-}
-*/
 .crd > h5 {
     font-size: 50px;
 }

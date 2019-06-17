@@ -6,6 +6,7 @@ namespace App\Controller;
 
 trait ProductTrait
 {
+
     public function slugify($text)
     {
 // replace non letter or digits by -
