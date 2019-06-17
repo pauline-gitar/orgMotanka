@@ -45,11 +45,10 @@ class ProductController extends AbstractController
      *     defaults={"slug"},
      *     methods={"GET"},
      *     name="product_details")
-     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function viewProductDetails($slug)
     {
-        $id = $this->getDoctrine();
+
         $product = $this->getDoctrine()
             ->getRepository(Product::class)
             ->findOneBy(['slug' => $slug]);
@@ -59,7 +58,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/product/creation", name="product-creation")
+     * @Route("/product_creation", name="product-creation")
      */
     public function createProduct(Request $request)
     {

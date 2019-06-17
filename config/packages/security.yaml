@@ -4,15 +4,37 @@ security:
         App\Entity\User: bcrypt
     providers:
         in_memory: { memory: ~ }
+        in_database:
+            entity:
+                class: App\Entity\User
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: true
-            guard:
-                authenticators:
-                    - App\Security\AppCustomAuthenticator
+
+            form_login:
+                #Route qui gere la connexion d'un membre
+                login_path: security_login
+                check_path: security_login
+                #champ email du formulaire
+                username_parameter: form[email]
+                #champ password du formulaire
+                password_parameter: form[password]
+                #redirection
+                default_target_path: product
+            provider: in_database
+
+            #La deconnexion est gere par symfony
+            logout:
+
+                #L'URL de deconnexion
+                path: /deconnexion
+
+                #L'URL de redirection de la deconnexion
+                target: /
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

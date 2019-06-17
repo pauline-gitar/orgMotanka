@@ -3,11 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ *  * @UniqueEntity(
+ *     fields={"email"},
+ *     message="L'email est deja utilise !"
+ * )
  */
 class User implements UserInterface
 {
@@ -66,10 +71,13 @@ class User implements UserInterface
      * @Assert\Regex(
      *     pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$/",
      *     message="Votre mot de passe doit contenir au moins 8 caractères, une majuscule et un chiffre.")
-     *
      */
     private $password;
 
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="Votre mot de passe ne correspond pas")
+     */
+    public $confirm_password;
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="merci de mettre votre adresse")
@@ -223,9 +231,10 @@ class User implements UserInterface
      *
      * @return (Role|string)[] The user roles
      */
-    public function getRoles()
+
+    public function getRoles(): ?array
     {
-        // TODO: Implement getRoles() method.
+        return $this->roles;
     }
 
     /**
@@ -237,7 +246,7 @@ class User implements UserInterface
      */
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
+        return null;
     }
 
     /**
@@ -247,7 +256,7 @@ class User implements UserInterface
      */
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
+        return $this->email;
     }
 
     /**

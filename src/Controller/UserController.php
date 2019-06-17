@@ -41,35 +41,41 @@ class UserController extends AbstractController
         $user->setRoles(['ROLE_USER']);
 
         // Création du formulaire d'inscription
-        $form = $this->createFormBuilder($user)
+        $formInsc = $this->createFormBuilder($user)
             ->add('nom', TextType::class, [
                 'label' => "Saisissez votre nom",
                 'attr' => [
-                    'placeholder' => "Saisissez votre nom"
+                    'placeholder' => "Nom"
                 ]
             ])
             ->add('first_name', TextType::class, [
                 'label' => "Saisissez votre prénom",
                 'attr' => [
-                    'placeholder' => "Saisissez votre prénom"
+                    'placeholder' => "Prénom"
                 ]
             ])
             ->add('email', EmailType::class, [
                 'label' => "Saisissez votre email",
                 'attr' => [
-                    'placeholder' => "Saisissez votre email"
+                    'placeholder' => "Email"
                 ]
             ])
             ->add('password', PasswordType::class, [
                 'label' => "Saisissez votre mot de passe",
                 'attr' => [
-                    'placeholder' => "Saisissez votre mot de passe"
+                    'placeholder' => "Password"
+                ]
+            ])
+            ->add('confirm_password', PasswordType::class, [
+                'label' => "Confirmez votre mot de passe",
+                'attr' => [
+                    'placeholder' => "Confirmez password"
                 ]
             ])
             ->add('address', TextType::class, [
-                'label' => "Saisissez votre mot de passe",
+                'label' => "Saississez votre adresse",
                 'attr' => [
-                    'placeholder' => "Saisissez votre adresse"
+                    'placeholder' => "Adresse"
                 ]
             ])
             ->add('city', TextType::class, [
@@ -93,12 +99,12 @@ class UserController extends AbstractController
         // vérifie les données et les recharge dans l'objet membre
         // vérification grace aux Asserts (entity membre)
         // hydratation de notre objet membre
-        $form->handleRequest($request);
+        $formInsc->handleRequest($request);
 
         // 3. Insertion dans la BDD //OK
 
         // si le formulaire est soumis ET valide
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($formInsc->isSubmitted() && $formInsc->isValid()) {
 
              // encodage du mot de passe
             $user->setPassword(
@@ -119,15 +125,15 @@ class UserController extends AbstractController
             $this->addFlash('notice',
                 'Félicitations, vous pouvez vous connecter');
 
-            // redirection
-           // return $this->redirectToRoute('user_connexion');
+            # redirection
+            return $this->redirectToRoute('security_login');
 
         } // Fin du IF $form is submitted
 
         // rendu à la vue
         return $this->render('user/inscription.html.twig',
             [
-                'form' => $form->createView()
+                'form' => $formInsc->createView()
             ]);
     }
 

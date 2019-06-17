@@ -1,3 +1,5 @@
+/*form produit*/
+
 .picture{
     margin: auto;
 }
@@ -9,4 +11,12 @@
 
 .display-inline-block{
     display: inline-block;
+}
+
+/*formulaire d'inscription*/
+
+.placeholder_style{
+    font-size: 0.8rem;
+    background-color: green;
+    margin-left: 120px;
 }

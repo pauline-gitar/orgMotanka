@@ -1,26 +1,59 @@
 <?php
 
+
 namespace App\Controller;
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="app_login")
+     * Connexion d'un membre
+     * @Route("/connexion", name="security_login")
+     * @param AuthenticationUtils $authenticationUtils
+     * @return \symfony\component\HttpFoundation\Response
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils)
     {
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
+        $form = $this->createFormBuilder([
+            'email' =>$authenticationUtils->getLastUsername()
+        ])
+            ->add('email',EmailType::class,[
+                'label' => 'Email',
+                'attr' => [
+                    'placeholder' => 'Saisissez votre email'
+                ]
+            ])
+            ->add('password',PasswordType::class,[
+                'label' => 'Saisissez votre mot de passe',
+                'attr' => [
+                    'placeholder' => 'Saisissez votre mot de passe'
+                ]
+            ])
+            ->add('submit', SubmitType::class,[
+                'label' => "Connexion"
+            ])
+            ->getForm();
 
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error]);
+        return $this->render('user/login.html.twig',[
+            'form' => $form->createView(),
+            'error' => $authenticationUtils->getLastAuthenticationError()
+        ]);
+
+    }
+
+    /**
+     * Deconnexion d'un membre
+     * @Route("/deconnexion", name="security_logout")
+     */
+    public function deconnexion()
+    {
+
     }
 }
