@@ -26,7 +26,7 @@ class SellerFixtures extends Fixture
                 ->setLocalisation("48.862725;2.287592000000018");
         $manager->persist($seller);
 
-        #Seller1
+        #Seller2
         $seller = new Seller();
         $seller->setFirstName("Vladimir")
             ->setLastName("y")
@@ -38,7 +38,7 @@ class SellerFixtures extends Fixture
             ->setLocalisation("51.862725;5.287592004444018");
         $manager->persist($seller);
 
-        #Seller1
+        #Seller3
         $seller = new Seller();
         $seller->setFirstName("Boris")
             ->setLastName("z")
@@ -50,7 +50,7 @@ class SellerFixtures extends Fixture
             ->setLocalisation("38.862725;2.456592000000018");
         $manager->persist($seller);
 
-        #Seller1
+        #Seller4
         $seller = new Seller();
         $seller->setFirstName("Gregor")
             ->setLastName("l")
@@ -61,6 +61,7 @@ class SellerFixtures extends Fixture
             ->setZipCode("44444")
             ->setLocalisation("67.862725;8.287567000000018");
         $manager->persist($seller);
+
         $manager->flush();
 
         $this->addReference(self::PRODUCT_SELLER_REFERENCE, $seller);

@@ -7,12 +7,13 @@
     --rouge:#A7413F;
     height: 100%;
 }
-body	{
+body{
     min-height: 100%;
 }
+
 /* PAGE PRODUITS */
 .white{
-    padding-top: 20px;
+    padding: 20px;
 }
 .cardProd{
     padding-bottom: 20px;
@@ -22,7 +23,6 @@ body	{
     object-fit: cover;
     object-position: 0px;
     height: 300px;
-
 }
 .sizeCardBdy{
     height:206px;
@@ -42,17 +42,23 @@ body	{
 
 .no-gutters{
     height:600px;
+    display: flex;
+    
 }
-
 .crd{
     height:600px;
     width:500px;
 }
 .crd > h5 {
-    font-size: 50px;
+    font-size: 40px;
 }
 .crd > p {
-    font-size: 22px;
+    font-size: 19px;
+}
+.card-img{
+    object-fit: cover;
+    object-position: 0px;
+    height: 600px;
 }
 .btnDetails{
     width: 280px;

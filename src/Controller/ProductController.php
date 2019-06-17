@@ -63,7 +63,7 @@ class ProductController extends AbstractController
     public function createProduct(Request $request)
     {
 
-        //a faire recuperer le vendeur connecte et laffecter a la creation dun produit
+        //a faire recuperer le vendeur connecté et laffecter a la creation dun produit
 
         //
 
