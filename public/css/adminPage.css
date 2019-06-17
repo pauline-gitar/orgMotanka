@@ -1,0 +1,7 @@
+.buttonsStyle{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}

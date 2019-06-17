@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+{% set current = '' %}
+{% block page_title %}
+    Accueil Page Admin
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"
+          integrity="sha256-AWdeVMUYtwLH09F6ZHxNgvJI37p+te8hJuSMo44NVm0=" crossorigin="anonymous"/>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block final_javascripts %}
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"
+            integrity="sha256-SUaao5Q7ifr2twwET0iyXVy0OVnuFJhGVi5E/dqEiLU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="cont1">
+        <h2>Bienvenue sur la page Admin,</h2>
+        <div class="buttonsStyle">
+            <li><form method="POST" action="/inscription_vendeur">
+                    <input type="submit" name="addSeller" value="Ajouter un vendeur" class="btn btn-default btn-lg"></form>
+            </li>
+            <li><form method="POST" action="/product_creation">
+                    <input type="submit" name="addProduct" value="Ajouter un produit" class="btn btn-default btn-lg"></form>
+            </li>
+            <li><form method="POST" action="/">
+                    <input type="submit" name="addProduct" value="Ajouter un ? " class="btn btn-default btn-lg"></form>
+        </div>
+    </div>
+{% endblock %}
