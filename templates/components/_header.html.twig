@@ -1,25 +1,33 @@
 <header class="home-header">
-    <nav class="navbar navbar-expand-lg">
-        <div class="row align-items-center">
+    <div class="container">
+        <div class="header_flex">
 
-            <img src="{{ asset('images/logo_Motanka.png') }}" id="logo">
-            <div class="title">
-                <h1>Organisation <span class="text-uppercase">Motanka</span></h1>
-            </div>
+            <div class="logo_flex">
+                <div class="img_header">
+                    <img src="{{ asset('images/logo_Motanka.png') }}" id="logo">
+                </div>
+                <div class="title_header">
+                    <h1>Organisation <span class="text-uppercase">Motanka</span></h1>
+                </div>
+            </div> <!-- fin du logo flex-->
 
-            <div class="text-md-right">
-                <ul class="navbar-nav">
+
+        <div class="flex_mnu_header">
+            <div class="flex_nav_mnu">
+                <ul class="flex_nav_mnu">
+
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('security_logout') }}">Deconnexion</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="#">Profil</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('security_logout') }}">Deconnexion</a>
+                        </li>
+
                     {% else %}
-                        {#                        <li class="nav-item">#}
-                        {#                            <a class="nav-link" href="{{ path('security_login') }}">Connexion</a>#}
-                        {#                        </li>#}
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('security_login')}}" data-toggle="modal"
                                data-target="#connexion">Connexion</a>
@@ -30,7 +38,7 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Connectez-vous</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -39,7 +47,6 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-xs-8 col-xs-push-2">
-
 
                                                 {% for message in app.flashes('notice') %}
                                                     <div class="alert alert-success">
@@ -54,12 +61,12 @@
                                                     </div>
                                                 {% endif %}
                                                 <h3>Connexion</h3>
-{#                                                {% if form is defined %}#}
-{#                                                {{ form(form#}
-{#                                                    , {attr:{novalidate: 'novalidate' }}#}
-{#                                                    , {'action': path('security_login'), 'method': 'POST'})#}
-{#                                                }}#}
-{#                                                {% endif %}#}
+                                                {#                                                {% if form is defined %}#}
+                                                {#                                                {{ form(form#}
+                                                {#                                                    , {attr:{novalidate: 'novalidate' }}#}
+                                                {#                                                    , {'action': path('security_login'), 'method': 'POST'})#}
+                                                {#                                                }}#}
+                                                {#                                                {% endif %}#}
                                             </div>
                                         </div>
                                     </div>
@@ -78,19 +85,15 @@
                             <a class="nav-link" href="{{ path('user_inscription') }}">Inscription</a>
                         </li>
                     {% endif %}
+
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i></a>
                     </li>
                 </ul>
             </div>
-        </div>
-    </nav>
-    <div class="container d-flex align-items-center justify-content-between">
+        </div>  <!-- fin du flex_mnu_header-->
 
+        </div> <!-- fin du header flex-->
 
-        {% include 'components/_nav.html.twig' %}
-    </div> <!-- Fin de la div Container -->
-
-
+    </div> <!-- fin de la div container -->
 </header> <!-- fin du Header -->
-<div class="container white">

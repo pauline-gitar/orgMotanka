@@ -94,10 +94,76 @@ a:active { color: var(--grisclair) ; font-size: 1.1rem;}
     border: solid 10px white;
 }
 
-/*********************HEADER modif ANDRE***********************/
+.home-header h1 {
+    margin-bottom: 0px;
+    float: left;
+    padding-right: 20px;
+}
 
+.header_flex {
+    display: flex;
+    flex-wrap: none;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
+.logo_flex {
+    display: flex;
+    flex-wrap: none;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.title_header {
+    vertical-align: middle;
+    margin: auto;
+}
+.flex_mnu_header{
+    vertical-align: middle;
+    align-content: stretch;
+    text-align: center;
+    margin:auto 0;
+}
 
+/*********************MEDIA QUERIES HEADER MENU***********************/
+@media (max-width: 860px) /*affichage tablette*/
+{
+
+}
+@media (max-width: 640px) /*affichage smartphone*/
+{
+    .header_flex {
+        flex-direction: column;
+    }
+    .logo_flex {
+        flex-direction: column;
+    }
+    .flex_mnu_header{
+        flex-direction: row;
+        margin:auto;
+    }
+    .flex_nav_mnu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+
+}
+
+/**********************NAV*****************************/
+.flex_nav_main {
+    background: white;
+    border-bottom: var(--rouge) 1px solid ;
+}
+.flex_nav {
+    padding: 0;
+}
+.flex_nav a:link {
+    color: var(--rouge) ; font-size: 1.1rem;
+}
+.flex_nav a:visited { color: #C9C9C9 ; font-size: 1.1rem;}
+.flex_nav a:hover { color: #C9C9C9 ; font-size: 1.1rem;}
+.flex_nav a:active { color: var(--rouge) ; font-size: 1.1rem;}
 
 /**********************MAIN****************************/
 
