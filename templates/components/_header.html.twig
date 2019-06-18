@@ -3,11 +3,16 @@
         <div class="header_flex">
 
             <div class="logo_flex">
+
                 <div class="img_header">
+                    <a href="{{ path('home') }}">
                     <img src="{{ asset('images/logo_Motanka.png') }}" id="logo">
+                    </a>
                 </div>
                 <div class="title_header">
+                    <a href="{{ path('home') }}">
                     <h1>Organisation <span class="text-uppercase">Motanka</span></h1>
+                    </a>
                 </div>
             </div> <!-- fin du logo flex-->
 
@@ -28,70 +33,41 @@
 
                     {% else %}
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('security_login')}}" data-toggle="modal"
-                               data-target="#connexion">Connexion</a>
-                        </li>
-                        <!-- Modal -->
-                        <div class="modal fade" id="connexion" tabindex="-1" role="dialog"
-                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Connectez-vous</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <!-- Modal BODY -->
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-xs-8 col-xs-push-2">
-
-                                                {% for message in app.flashes('notice') %}
-                                                    <div class="alert alert-success">
-                                                        {{ message }}
-                                                    </div>
-                                                {% endfor %}
-
-                                                {% if error is defined and error %}
-                                                    <div class="alert alert-danger">
-                                                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                                                        {{ error.messageKey|trans(error.messageData, 'security')| replace({"Invalid credentials." : "Identifiant et/ou mot de passe incorrect."}) }}
-                                                    </div>
-                                                {% endif %}
-                                                <h3>Connexion</h3>
-                                                {#                                                {% if form is defined %}#}
-                                                {#                                                {{ form(form#}
-                                                {#                                                    , {attr:{novalidate: 'novalidate' }}#}
-                                                {#                                                    , {'action': path('security_login'), 'method': 'POST'})#}
-                                                {#                                                }}#}
-                                                {#                                                {% endif %}#}
-                                            </div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('security_login') }}" data-toggle="modal"
+                                   data-target="#connexion">Connexion</a>
+                            </li>
+                            <!-- Modal -->
+                            <div class="modal fade" id="connexion" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Connexion</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                                        </button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <!-- Modal BODY -->
+                                        <div class="modal-body">
+                                             {% include 'incs/login_form.html.twig' %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('user_inscription') }}">Inscription</a>
+                            </li>
+                        {% endif %}
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('user_inscription') }}">Inscription</a>
+                            <a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i></a>
                         </li>
-                    {% endif %}
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-shopping-basket"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>  <!-- fin du flex_mnu_header-->
+                    </ul>
+                </div>
+            </div>  <!-- fin du flex_mnu_header-->
 
         </div> <!-- fin du header flex-->
 
