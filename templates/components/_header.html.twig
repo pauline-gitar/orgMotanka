@@ -6,32 +6,32 @@
 
                 <div class="img_header">
                     <a href="{{ path('home') }}">
-                    <img src="{{ asset('images/logo_Motanka.png') }}" id="logo">
+                        <img src="{{ asset('images/logo_Motanka.png') }}" id="logo">
                     </a>
                 </div>
                 <div class="title_header">
                     <a href="{{ path('home') }}">
-                    <h1>Organisation <span class="text-uppercase">Motanka</span></h1>
+                        <h1>Organisation <span class="text-uppercase">Motanka</span></h1>
                     </a>
                 </div>
             </div> <!-- fin du logo flex-->
 
 
-        <div class="flex_mnu_header">
-            <div class="flex_nav_mnu">
-                <ul class="flex_nav_mnu">
+            <div class="flex_mnu_header">
+                <div class="flex_nav_mnu">
+                    <ul class="flex_nav_mnu">
 
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('user_profil') }}">Profil</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Profil</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('security_logout') }}">Deconnexion</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('security_logout') }}">Deconnexion</a>
+                            </li>
 
-                    {% else %}
+                        {% else %}
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('security_login') }}" data-toggle="modal"
@@ -50,7 +50,7 @@
                                         </div>
                                         <!-- Modal BODY -->
                                         <div class="modal-body">
-                                             {% include 'incs/login_form.html.twig' %}
+                                            {% include 'incs/login_form.html.twig' %}
                                         </div>
                                     </div>
                                 </div>
