@@ -20,10 +20,10 @@ Lien font : <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,40
 body
 {
     color: var(--beige);
-    font-size: 11px; font-family: 'Lato', sans-serif;
+    font-size: 1rem; font-family: 'Lato', sans-serif;
     background-color:var(--grisclair);
     margin: auto;
-    text-align: center;
+    text-align: left;
 }
 
 /***************************TEXT*****************************************/
@@ -32,7 +32,7 @@ p { color: black; font-size: 0.9rem;  font-family: 'Lato', sans-serif; font-weig
 h1 { color: var(--rouge);
     font-size: 1.5rem; font-family: 'Playfair Display', serif; font-weight: 900; text-align: center; padding: 5px;}
 h2 { color: var(--beige); font-size: 1.2rem; font-family: 'Playfair Display', serif; font-weight: 900; text-align: center; padding: 5px;}
-h3 { color:var(--beige) ! important; font-size: 1.1rem; font-family: 'Playfair Display', serif; text-align: center; padding: 3px; }
+h3 { color:var(--rouge) ! important; font-size: 1.1rem; font-family: 'Playfair Display', serif; font-weight: 700; text-align: center; padding: 3px; }
 h4 { color: black; font-size: 1rem; font-family: 'Lato', sans-serif; font-variant: small-caps; text-align: left; padding: 5px; }
 h6 { color: black; font-size: 1rem; font-family: 'Lato', sans-serif; text-align: left; font-weight: 900 }
 legend { color: var(--beige); font-size: 11px; font-family: 'Playfair Display', serif; font-variant: small-caps;text-align: left; }
@@ -73,7 +73,7 @@ ul{
 a:link { color: var(--rouge) ; font-size: 1.1rem;}
 a:visited { color:var(--grisclair) ; font-size: 1.1rem;}
 a:hover { color: white; font-size: 1.1rem;}
-a:active { color: var(--grisclair) ; font-size: 1.1rem;}
+a:active { color: var(--rouge) ; font-size: 1.1rem;}
 
 .mnu_dropdown {
     background-color: var(--beige);
@@ -126,9 +126,11 @@ a:active { color: var(--grisclair) ; font-size: 1.1rem;}
 
 /*********************MEDIA QUERIES HEADER MENU***********************/
 @media (max-width: 860px) /*affichage tablette*/
-{
-
+{       #logo {
+            display: inline-block !important;
+            }
 }
+
 @media (max-width: 640px) /*affichage smartphone*/
 {
     .header_flex {
@@ -141,11 +143,18 @@ a:active { color: var(--grisclair) ; font-size: 1.1rem;}
         flex-direction: row;
         margin:auto;
     }
+    .title_header {
+        margin-top: 20px;
+    }
+
     .flex_nav_mnu {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         margin-top: 15px;
+    }
+    #logo{
+        display:inline-block !important;
     }
 
 }
@@ -154,17 +163,37 @@ a:active { color: var(--grisclair) ; font-size: 1.1rem;}
 .flex_nav_main {
     background: white;
     border-bottom: var(--rouge) 1px solid ;
+    display: flex;
+    flex-wrap: none;
+    flex-direction: row;
+    justify-content: center
 }
 .flex_nav {
     padding: 0;
 }
-.flex_nav a:link {
-    color: var(--rouge) ; font-size: 1.1rem;
-}
-.flex_nav a:visited { color: #C9C9C9 ; font-size: 1.1rem;}
-.flex_nav a:hover { color: #C9C9C9 ; font-size: 1.1rem;}
-.flex_nav a:active { color: var(--rouge) ; font-size: 1.1rem;}
+.flex_nav_main a:link {color: var(--rouge) ; font-size: 1rem;}
+.flex_nav_main a:visited { color: #565656 ; font-size: 1rem;}
+.flex_nav_main a:hover { color: var(--rouge) ; font-size: 1rem;}
+.flex_nav_main a:active { color: var(--rouge) ; font-size: 1rem;}
 
+/**********************MEDIA QUERIES NAV*****************************/
+
+@media (max-width: 640px) /*affichage smartphone*/ {
+    .flex_nav_main {
+        border-bottom: var(--rouge) 1px solid;
+        display: flex;
+        flex-direction: column;
+        justify-content: center
+
+    }
+
+    .flex_nav {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center
+    }
+}
 /**********************MAIN****************************/
 
 .white {
@@ -205,4 +234,13 @@ a:active { color: var(--grisclair) ; font-size: 1.1rem;}
         max-width: 100%;
         height: auto;
     }
+}
+
+/*****************************FORMS*******************************************/
+.flex_forms {
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px;
+    display: flex !important;
+    justify-content: space-around;
 }

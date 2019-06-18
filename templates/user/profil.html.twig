@@ -1,0 +1,31 @@
+{% extends "layout.html.twig" %}
+{% set current = '' %}
+{% block page_title %}
+    Inscription
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block final_javascripts %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-12 cardProd">
+                <h5 class="card-title">Bonjour {{ user.firstName }} {{ user.nom }}</h5>
+                <p>Vous ètes inscrits depuis</p>
+                <h6>Votre email : </h6>
+                <p>{{ user.email }}</p>
+                <p>Modifier vorte mot de passe</p>
+                <h6>Votre adresse : </h6>
+                <p>{{ user.address }}, {{ user.city }}</p>
+
+        </div> <!-- Fin de la div raw -->
+    </div> <!-- Fin de la div container -->
+{% endblock %}
+

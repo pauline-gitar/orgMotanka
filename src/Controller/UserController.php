@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -135,6 +136,21 @@ class UserController extends AbstractController
             [
                 'form' => $formInsc->createView()
             ]);
+    }
+
+    /**
+     * Affichage et modification du profil Utilisateur
+     * @Route("/user/profile",
+     *      name="user_profil")
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function user_profil(EntityManagerInterface $em, UserInterface $user)
+    {
+        $user = $this->getUser();
+        return $this->render('/user/profil.html.twig', [
+            'user' => $user
+        ]);
     }
 
 }
