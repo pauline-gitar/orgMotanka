@@ -1,0 +1,30 @@
+{% extends "layout.html.twig" %}
+        {% block page_title %}
+
+        {% endblock %}
+
+
+{% block content %}
+    <div class="container cont_sellers">
+        <div class="row">
+            {% for seller in sellers %}
+                <div class="col-md-4 col-sm-12 cardProd">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ asset('images/sellers/' ~ seller.picture) }}"
+                             alt="{{ seller.lastName }}">
+                        <div class="card-body sizeCardBdy">
+                            <h5 class="card-title">{{ seller.firstName }} {{ seller.lastName }}</h5>
+                            <p class="card-text">{{ seller.description | slice(0, 100) | raw }}...</p>
+
+                            <a href="{{ path('seller_details', {
+                                'slug' : seller.slug
+                            }) }}" class="btn btn-default">En savoir plus</a>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

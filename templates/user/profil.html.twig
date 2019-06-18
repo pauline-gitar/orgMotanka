@@ -9,23 +9,64 @@
 
 {% endblock %}
 
+{% block content %}
+
+    <h2 class="title_profil">Bonjour {{ user.firstName }} {{ user.nom }}</h2>
+<div class="row mt-4">
+    <div class="col">
+        <p class="date" id="date"></p>
+    </div>
+    <div class="col">
+        <p>Vous êtes inscrits depuis  {{ user.inscriptionDate | date('d/m/Y') }}  </p>
+    </div>
+</div>
+
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="row">
+
+            <div class="col">
+
+        {{ form_start(form, {attr:{novalidate: 'novalidate' }}) }}
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.nom) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.first_name) }}
+            </div>
+        </div>
+
+        {{ form_row(form.email) }}
+
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.password) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.confirm_password) }}
+            </div>
+        </div>
+        {{ form_row(form.address) }}
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.city) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.zip_code) }}
+            </div>
+        </div>
+        {{ form_row(form.submit, {'attr': {'class': 'submitt'}}) }}
+        {{ form_end(form) }}
+    </div>
+
+        </div> <!-- Fin de la div raw -->
+{% endblock %}
+
 {% block final_javascripts %}
 
 {% endblock %}
-
-{% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-sm-12 cardProd">
-                <h5 class="card-title">Bonjour {{ user.firstName }} {{ user.nom }}</h5>
-                <p>Vous ètes inscrits depuis</p>
-                <h6>Votre email : </h6>
-                <p>{{ user.email }}</p>
-                <p>Modifier vorte mot de passe</p>
-                <h6>Votre adresse : </h6>
-                <p>{{ user.address }}, {{ user.city }}</p>
-
-        </div> <!-- Fin de la div raw -->
-    </div> <!-- Fin de la div container -->
-{% endblock %}
-

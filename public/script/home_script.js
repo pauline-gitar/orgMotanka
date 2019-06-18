@@ -1,18 +1,16 @@
 
-
 // -- Initialisation de jQuery
 $(function(){
 
+    Date.prototype.ddmmyyyy = function() {
+        var yyyy = this.getFullYear().toString();
+        var mm = (this.getMonth()+1).toString();
+        var dd  = this.getDate().toString();
+        return (dd[1]?dd:"0"+dd[0]) + "/" + (mm[1]?mm:"0"+mm[0]) + "/" + yyyy; // padding
+    };
 
-    // definir l'élément/bouton
-    $btn_hamburger = $('.btn_hamburger');
-    $btn_toogle = $('#btn_toogle');
-
-    // 1. ecouter l'evenement sur le bouton
-    $btn_hamburger.click(function() {
-        $btn_toogle.toggle(300);
-    });
-
-
+    var date = new Date();
+    console.log( date.ddmmyyyy() ); // affichage console
+    $('#date').append('Nous somme le ' + date.ddmmyyyy());
 
 });

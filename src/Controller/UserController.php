@@ -145,12 +145,108 @@ class UserController extends AbstractController
      * @param $slug
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function user_profil(EntityManagerInterface $em, UserInterface $user)
+    public function user_profil(EntityManagerInterface $em,
+                                UserInterface $user,
+                                Request $request,
+                                UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = $this->getUser();
+        $userInscritpionDate = $user->getInscriptionDate()->format('d/m/Y');
+
+
+        // Création du formulaire de modification de Profil
+        $formInsc = $this->createFormBuilder($user)
+            ->add('nom', TextType::class, [
+                'label' => "Modifier votre nom",
+                'attr' => [
+                    'placeholder' => "{{ user.nom }}"
+                ]
+            ])
+            ->add('first_name', TextType::class, [
+                'label' => "Modifier votre prénom",
+                'attr' => [
+                    'placeholder' => "{{ user.firstName }}"
+                ]
+            ])
+            ->add('email', EmailType::class, [
+                'label' => "Modifier votre email",
+                'attr' => [
+                    'placeholder' => "{{ user.email }}"
+                ]
+            ])
+            ->add('password', PasswordType::class, [
+                'label' => "Modifier votre mot de passe",
+                'attr' => [
+                    'placeholder' => "••••••••••"
+                ]
+            ])
+            ->add('confirm_password', PasswordType::class, [
+                'label' => "Confirmez votre mot de passe",
+                'attr' => [
+                    'placeholder' => "••••••••••"
+                ]
+            ])
+            ->add('address', TextType::class, [
+                'label' => "Modifier votre adresse",
+                'attr' => [
+                    'placeholder' => "{{ user.address }}"
+                ]
+            ])
+            ->add('city', TextType::class, [
+                'label' => "Ville",
+                'attr' => [
+                    'placeholder' => "{{ user.city }}"
+                ]
+            ])
+            ->add('zip_code', IntegerType::class, [
+                'label' => "Code postal",
+                'attr' => [
+                    'placeholder' => "{{ user.zipCode }}"
+                ]
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => "Modifier"
+            ])
+            ->getForm();
+
+        // Traitement des données POST
+        // vérifie les données et les recharge dans l'objet membre
+        // vérification grace aux Asserts (entity membre)
+        // hydratation de notre objet membre
+        $formInsc->handleRequest($request);
+
+        // 3. Insertion dans la BDD //OK
+
+        // si le formulaire est soumis ET valide
+        if ($formInsc->isSubmitted() && $formInsc->isValid()) {
+
+            // encodage du mot de passe
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $user->getPassword()
+                )
+            );
+
+            // 3. Sauvegarde en BDD
+            // (entityManager $em)
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            // 4. notification flash
+            // fonctionne sur le principe de session
+            $this->addFlash('notice',
+                'Félicitations, vos informations ont bien été modifiées');
+
+        } // Fin du IF $form is submitted
+
         return $this->render('/user/profil.html.twig', [
-            'user' => $user
+            'form' => $formInsc->createView(),
+            'user' => $user,
+            'date'=> $userInscritpionDate
         ]);
+
     }
 
 }

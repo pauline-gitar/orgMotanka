@@ -4,7 +4,9 @@
 namespace App\Controller;
 
 
+use App\Entity\Product;
 use App\Entity\Seller;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -23,7 +25,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class SellerController extends AbstractController
 {
-
+    use ProductTrait;
     /**
      * Page d'Inscription
      * @Route("/inscription_vendeur", name="seller_registration")
@@ -102,6 +104,12 @@ class SellerController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
 
+            #Creation du slug
+            $seller->setSlug(
+                $this->slugify(
+                    $seller->getFirstName()
+                )
+            );
             # Upload de l'image
 
             /** @var UploadedFile $picture*/
@@ -122,6 +130,43 @@ class SellerController extends AbstractController
         # Rendu de la vue
         return $this->render('admin/addSeller.html.twig', [
             'form' => $form->createView()
+        ]);
+    }
+
+
+
+    // page des vendeurs
+    /**
+     * @Route("/sellers",
+     *     name="sellers")
+     */
+    public function viewSeller()
+    {
+        //récupération des vendeurs ds la BDD
+        $sellers =$this->getDoctrine()
+            ->getRepository(Seller::class)
+            ->findAll();
+        return $this->render('default/sellers.html.twig', [
+            'sellers' => $sellers,
+        ]);
+
+    }
+
+    // affichage d'un vendeur
+    /**
+     * @Route("/sellers/{slug<[a-zA-Z0-9\-_\/]+>}",
+     *     defaults={"slug"},
+     *     methods={"GET"},
+     *     name="seller_details")
+     */
+    public function viewSellerDetail($slug)
+    {
+
+        $seller = $this->getDoctrine()
+            ->getRepository(Seller::class)
+            ->findOneBy(['slug' => $slug]);
+        return $this->render('/default/seller_details.html.twig', [
+            'seller' => $seller,
         ]);
     }
 }

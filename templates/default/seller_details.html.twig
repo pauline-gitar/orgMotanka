@@ -1,0 +1,25 @@
+{% extends "layout.html.twig" %}
+        {% block page_title %}
+
+        {% endblock %}
+
+
+{% block content %}
+    <div container>
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    <a href="{{ asset('images/seller/' ~ seller.picture) }}"><img src="{{ asset('images/seller/' ~ seller.picture) }}" class="card-img" alt="{{ seller.firstName }}-{{ seller.lastName }}"/></a>
+                </div>
+                <div class="col-md-4 blockText">
+                    <div class="card-body crd">
+                        <h5 class="card-title">{{ seller.firstName }} {{ seller.lastName }}</h5>
+                        <p class="card-text">{{ seller.description | raw }}</p>
+                <h5> Ses produits : </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
