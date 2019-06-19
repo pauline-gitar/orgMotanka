@@ -244,3 +244,11 @@ a:active { color: var(--rouge) ; font-size: 1.1rem;}
     display: flex !important;
     justify-content: space-around;
 }
+
+/*****************************************MAP**************************************/
+
+#mapid { height: 400px;
+         width: 400px; }
+#mapid a {
+    font-size: 1rem !important;
+    }

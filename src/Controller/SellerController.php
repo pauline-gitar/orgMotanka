@@ -4,9 +4,7 @@
 namespace App\Controller;
 
 
-use App\Entity\Product;
 use App\Entity\Seller;
-use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -26,6 +24,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SellerController extends AbstractController
 {
     use ProductTrait;
+
     /**
      * Page d'Inscription
      * @Route("/inscription_vendeur", name="seller_registration")
@@ -165,8 +164,32 @@ class SellerController extends AbstractController
         $seller = $this->getDoctrine()
             ->getRepository(Seller::class)
             ->findOneBy(['slug' => $slug]);
+
+        // crée un tableau JSON
+        // 1 crée un tableau de données
+         $localisation = $seller->getLocalisation();
+
+       // $localisation = ['gps' => $seller->getLocalisation(),
+         //                 'city' => $seller->getCity()];
+
+
+        // 2 convertir en json
+      // $localisation_json = json_encode($localisation);
+
+        // 3 var_dump pour verifier les infos
+        // var_dump($localisation);
+
+        //$service_localisation_json = 'service_localisation.json';
+        //$fichier = fopen($service_localisation_json, 'w+');
+        //file_put_contents('service_localisation.json', 'gps_localisation'.var_export($localisation_json, true), FILE_APPEND);
+
+        // fwrite($fichier, $localisation);
+        // fclose($fichier);
+
         return $this->render('/default/seller_details.html.twig', [
             'seller' => $seller,
+            'localisation' => $localisation
         ]);
     }
+
 }
