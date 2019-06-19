@@ -244,3 +244,29 @@ a:active { color: var(--rouge) ; font-size: 1.1rem;}
     display: flex !important;
     justify-content: space-around;
 }
+
+
+/***********************FOOTER********************************/
+.bloc3blocs{
+    border: lime 1px solid;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.bloc3blocs2{
+    border: blue 1px solid;
+    display: flex;
+    justify-content: space-between;
+
+}
+.about{
+    border: purple 1px solid;
+    width: 400px;
+
+}
+.categories{
+    border: pink 1px solid;
+}
+.titres{
+    border: green 1px solid;
+}

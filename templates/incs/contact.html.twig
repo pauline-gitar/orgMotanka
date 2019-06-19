@@ -1,0 +1,74 @@
+
+{% extends "layout.html.twig" %}
+{% set current = '' %}
+{% block page_title %}
+    Inscription
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block final_javascripts %}
+
+{% endblock %}
+
+{% block content %}
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <h1 class="text-center">
+        Formulaire de contact
+    </h1>
+<div id="contact-form">
+    {{ form_start(formcontact) }}
+    <div class="row">
+        <div class="col">{{ form_row(formcontact.firstname) }}</div>
+        <div class="col">{{ form_row(formcontact.lastname) }}</div>
+    </div>
+    <div class="row">
+        <div class="col">{{ form_row(formcontact.email) }}</div>
+    </div>
+    {{ form_rest(formcontact) }}
+    <div class="form-group">
+        <button class="btn submitt">Envoyer</button>
+    </div>
+    {{ form_end(formcontact) }}
+</div>
+{% endblock %}
+
+
+
+{#<form name="contact" method="post">#}
+{#    <div class="row">#}
+{#        <div class="col">#}
+{#            <div class="form-group">#}
+{#                <label for="contact_firstname" class="required">Firstname</label>#}
+{#                <input type="text" id="contact_firstname" name="contact[firstname]" required="required" class="form-control">#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="col">#}
+{#            <div class="form-group">#}
+{#                <label for="contact_lastname" class="required">Lastname</label>#}
+{#                <input type="text" id="contact_lastname" name="contact[lastname]" required="required" class="form-control">#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="col">#}
+{#            <div class="form-group">#}
+{#                <label for="contact_email" class="required">Lastname</label>#}
+{#                <input type="text" id="contact_email" name="contact[email]" required="required" class="form-control">#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#            <label for="contact_message" class="required">Message</label>#}
+{#            <textarea id="contact_message" name="contact[message]" required="required" class="form-control"></textarea>#}
+{#        </div>#}
+{#        #}
+{#        <div class="form-group">#}
+{#            <button class="btn">Envoyer</button>#}
+{#        </div>#}
+{#    </div>#}
+{#</form>#}
