@@ -23,7 +23,7 @@ class SellerFixtures extends Fixture
                 ->setAddress("rue tintin")
                 ->setCity("Dnipropetrovsk")
                 ->setZipCode("11111")
-                ->setLocalisation("48.862725;2.287592000000018")
+                ->setLocalisation("48.862725,2.287592000000018")
                 ->setSlug('igor-xylo');
         $manager->persist($seller);
 
@@ -36,7 +36,7 @@ class SellerFixtures extends Fixture
             ->setAddress("rue milou")
             ->setCity("Donetsk")
             ->setZipCode("22222")
-            ->setLocalisation("51.862725;5.287592004444018")
+            ->setLocalisation("51.862725,5.287592004444018")
             ->setSlug('vladimir_yoshi');
         $manager->persist($seller);
 
@@ -49,7 +49,7 @@ class SellerFixtures extends Fixture
             ->setAddress("rue haddock")
             ->setCity("Jytomyr")
             ->setZipCode("33333")
-            ->setLocalisation("38.862725;2.456592000000018")
+            ->setLocalisation("38.862725,2.456592000000018")
             ->setSlug('boris_zelda');
         $manager->persist($seller);
 
@@ -62,7 +62,7 @@ class SellerFixtures extends Fixture
             ->setAddress("rue tournesol")
             ->setCity("Kiev")
             ->setZipCode("44444")
-            ->setLocalisation("67.862725;8.287567000000018")
+            ->setLocalisation("67.862725,8.287567000000018")
             ->setSlug('gregor_laura');
         $manager->persist($seller);
 
