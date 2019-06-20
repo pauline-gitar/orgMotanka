@@ -43,7 +43,7 @@ legend { color: var(--beige); font-size: 11px; font-family: 'Playfair Display', 
 {
     padding-top: 20px;
     background-color: var(--rouge);
-    font-size: 11px; font-family: 'Playfair Display', serif; text-align: center; font-variant: small-caps; color: var(--beige);
+    font-size: 20px; font-family: 'Playfair Display', serif; text-align: center; font-variant: small-caps; color: var(--beige);
 }
 
 i { color:var(--rouge);
@@ -71,9 +71,9 @@ ul{
 }
 
 a:link { color: var(--rouge) ; font-size: 1.1rem;}
-a:visited { color:var(--grisclair) ; font-size: 1.1rem;}
+a:visited { color:var(--grisclair) ; font-size: 1.1rem ;}
 a:hover { color: white; font-size: 1.1rem;}
-a:active { color: var(--grisclair) ; font-size: 1.1rem;}
+a:active { color: var(--grisclair) ; font-size: 1.1rem ;}
 
 .mnu_dropdown {
     background-color: var(--beige);
@@ -205,4 +205,86 @@ a:active { color: var(--grisclair) ; font-size: 1.1rem;}
         max-width: 100%;
         height: auto;
     }
+}
+/***********************FOOTER********************************/
+.contfoot{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.bloc3blocs2{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.about{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.socialIcon{
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+.list-social-icon-footer{
+
+    width: 200px;
+    justify-content: center;
+}
+.list-social-icon-footer > li{
+
+    padding: 10px;
+}
+.nwslttr{
+    width: 30%;
+    padding-left: 100px;
+}
+.nwslttr > h3{
+    font-size: 40px;
+}
+.categories{
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+}
+.listCat{
+    flex-direction: column;
+   /* align-items: center;*/
+    
+
+}
+.btn {
+    color: #fff;
+    background-color: #CA9D66 !important;
+    border-color: #CA9D66 !important;
+}
+#logoFooter{
+    width: 250px;
+    border-radius: 60%;
+}
+.allright{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.allright > .row{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.allrightFirst{
+
+    display: flex;
+    justify-content: center;
+    width: 900px;
 }

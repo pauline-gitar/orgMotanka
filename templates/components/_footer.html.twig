@@ -1,48 +1,70 @@
 
 <!--footer-->
 <footer class="footer">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-4  col-sm-4 col-xs-12">
+    <div class="container contfoot">
+        <div class="row bloc3blocs">
+            <div class="bloc3blocs2">
+                <!-- 1er bloc footer -->
                 <div class="about">
+                    <div class="logo_flex">
+                        <a class="img_header">
+                            <img src="{{ asset('images/logo_Motanka.png') }}" id="logoFooter">
+                        </a>
+                    </div>
+                        <div class="socialIcon">
+                        <ul class="list-social-icon list-social-icon-footer">
+                            <li>
+                                <a href="https://www.facebook.com/OrganisationMotanka/" class="facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/pg/OrganisationMotanka/about/?ref=page_internal" class="mail">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        </div>
+                     </div>
+                <!-- 2ème bloc footer -->
+            <div class="categories">
 
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-                </div>
+                <ul class="listCat">
+                    <li><a {# class="nav-link" href="{{ path('') }}"#}>Aide</a></li>
+                    <li><a {# href="{{ path('') }}"#}>Contact</a></li>
+                    <li><a {# href="{{ path('') }}"#}>Vendre</a></li>
+                    <li><a href="{{ path('product') }}">Boutique</a></li>
+                </ul>
             </div>
-            <div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-12">
-                <h3>NOS CATEGORIES</h3>
+                <!-- 3ème bloc subcribe box footer -->
+
+
+                {% block content %}
+                    <div class="nwslttr">
+                        <div class="row">
+                            <div class="col-xs-8 col-xs-push-2">
+                                {% for message in app.flashes('notice') %}
+                                    <div class="alert alert-success">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                <h3>Newsletter</h3>
+                                {{ form(form, {attr:{novalidate: 'novalidate', action: path('newsletter')}}) }}
+                            </div>
+                        </div>
+                    </div>
+                {% endblock %}
+
+
 
             </div>
-            <div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-12">
-                <h3>TITRE TITRE</h3>
-
-            </div>
-        </div>
         <!--All right-->
         <div class="allright">
             <div class="row">
-                <div class="col-sm-6 col-xs-12">
+                <div class="col-sm-6 col-xs-12 allrightFirst">
                     <p> © 2019 <a href="#">Organisation Motanka</a>. All rights reserved.</p>
-                </div>
-
-                <div class="col-sm-6 col-xs-12">
-                    <ul class="list-social-icon list-social-icon-footer">
-                        <li>
-                            <a href="#" class="facebook">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="mail">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-
-                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-</div>
