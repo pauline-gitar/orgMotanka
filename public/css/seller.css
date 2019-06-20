@@ -1,0 +1,15 @@
+.thumbnails_seller {
+    width: 190px;
+    border-radius: 5px;
+    padding-right: 20px;
+}
+
+.seller_div_btn {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.btn_seller{
+    padding: 10px;
+}

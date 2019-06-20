@@ -6,6 +6,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/payment.css') }}">
 
 {% endblock %}
 
@@ -16,11 +17,15 @@
     <div>
 
         <form action="/charge" method="post" id="payment-form">
-            <div class="form-row">
+            <div class="form-group">
                 <label for="card-element">
                     Credit or debit card
                 </label>
                 <div id="card-element">
+                    <!-- A Stripe Element will be inserted here. -->
+                </div>
+
+                <div id="payment-request-button">
                     <!-- A Stripe Element will be inserted here. -->
                 </div>
 

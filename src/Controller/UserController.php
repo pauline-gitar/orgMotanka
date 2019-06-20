@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Seller;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -247,6 +248,25 @@ class UserController extends AbstractController
             'date'=> $userInscritpionDate
         ]);
 
+    }
+
+    /**
+     * @param $user
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/user/payment",
+     *      name="user_payement")
+     */
+    public function payement(UserInterface $user,
+                             Request $request)
+    {
+        $user = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->findOneBy(['id' => $user->getId()]);
+
+        return $this->render('/user/payment.html.twig', [
+            'user' => $user,
+
+        ]);
     }
 
 

@@ -22,7 +22,7 @@ var style = {
     }
 };
 
-// Create an instance of the card Element.
+// Crée une instance de card Element
 var card = elements.create('card', {style: style});
 
 // Add an instance of the card Element into the `card-element` <div>.
@@ -38,6 +38,7 @@ card.addEventListener('change', function(event) {
     }
 });
 
+// créer un token pour securiser
 // Handle form submission.
 var form = document.getElementById('payment-form');
 form.addEventListener('submit', function(event) {

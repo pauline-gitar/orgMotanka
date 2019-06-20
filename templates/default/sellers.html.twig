@@ -2,29 +2,43 @@
         {% block page_title %}
 
         {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/seller.css') }}">
 
+{% endblock %}
 
 {% block content %}
     <div class="container cont_sellers">
-        <div class="row">
+<h2>Nos vendeurs</h2>
+
+            <ul class="list-group list-group-flush">
             {% for seller in sellers %}
-                <div class="col-md-4 col-sm-12 cardProd">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ asset('images/sellers/' ~ seller.picture) }}"
-                             alt="{{ seller.lastName }}">
-                        <div class="card-body sizeCardBdy">
-                            <h5 class="card-title">{{ seller.firstName }} {{ seller.lastName }}</h5>
-                            <p class="card-text">{{ seller.description | slice(0, 100) | raw }}...</p>
 
-                            <a href="{{ path('seller_details', {
-                                'slug' : seller.slug
-                            }) }}" class="btn btn-default">En savoir plus</a>
-
+                <div class="media">
+                    <img class="thumbnails_seller" src="{{ asset('images/seller/' ~ seller.picture) }}" class="mr-3" alt="{{ seller.lastName }}">
+                    <div class="media-body mr-3">
+                        <h5 class="mt-0">{{ seller.firstName }} {{ seller.lastName }}</h5>
+                        <a href="{{ path('seller_details', {
+                            'slug' : seller.slug
+                        }) }}"><p>{{ seller.description | slice(0, 200) | raw }}... >> Lire la suite</p></a>
+                    </div>
+                    <div class="seller_div_btn">
+                    <div class="btn_seller">
+                        <a href="{{ path('seller_details', {
+                            'slug' : seller.slug
+                        }) }}" class="btn btn-default">En savoir plus</a>
+                    </div>
+                        <div class="btn_seller">
+                            <a href="#" class="btn btn-default">Ses produits</a>
                         </div>
+
                     </div>
                 </div>
+                <hr>
+
             {% endfor %}
-        </div>
+                <ul>
     </div>
 {% endblock %}
 

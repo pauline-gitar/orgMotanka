@@ -62,6 +62,13 @@ ul{
     display:flex;
 }
 
+/**************************************LINK***********************************************/
+
+a:link {color: var(--rouge) ; font-size: 1rem;}
+a:visited { color: #565656 ; font-size: 1rem;}
+a:hover { color: var(--rouge) ; font-size: 1rem;}
+a:active { color: var(--rouge) ; font-size: 1rem;}
+
 /************* HOME MENU ******************/
 
 .home_nav
@@ -70,10 +77,10 @@ ul{
     color: var(--rouge);
 }
 
-a:link { color: var(--rouge) ; font-size: 1.1rem;}
-a:visited { color:var(--grisclair) ; font-size: 1.1rem;}
-a:hover { color: white; font-size: 1.1rem;}
-a:active { color: var(--rouge) ; font-size: 1.1rem;}
+.header_flex a:link { color: var(--rouge) ; font-size: 1.1rem;}
+.header_flex a:visited { color:var(--grisclair) ; font-size: 1.1rem;}
+.header_flex a:hover { color: white; font-size: 1.1rem;}
+.header_flex a:active { color: var(--rouge) ; font-size: 1.1rem;}
 
 .mnu_dropdown {
     background-color: var(--beige);
@@ -171,10 +178,6 @@ a:active { color: var(--rouge) ; font-size: 1.1rem;}
 .flex_nav {
     padding: 0;
 }
-.flex_nav_main a:link {color: var(--rouge) ; font-size: 1rem;}
-.flex_nav_main a:visited { color: #565656 ; font-size: 1rem;}
-.flex_nav_main a:hover { color: var(--rouge) ; font-size: 1rem;}
-.flex_nav_main a:active { color: var(--rouge) ; font-size: 1rem;}
 
 /**********************MEDIA QUERIES NAV*****************************/
 
