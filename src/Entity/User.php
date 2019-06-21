@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -115,6 +117,16 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="array")
      */
     private $roles = [];
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Charge", mappedBy="user")
+     */
+    private $charges;
+
+    public function __construct()
+    {
+        $this->charges = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -315,5 +327,36 @@ class User implements UserInterface, \Serializable
             // see section on salt below
             // $this->salt
             ) = unserialize($serialized, array('allowed_classes' => false));
+    }
+
+    /**
+     * @return Collection|Charge[]
+     */
+    public function getCharges(): Collection
+    {
+        return $this->charges;
+    }
+
+    public function addCharge(Charge $charge): self
+    {
+        if (!$this->charges->contains($charge)) {
+            $this->charges[] = $charge;
+            $charge->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCharge(Charge $charge): self
+    {
+        if ($this->charges->contains($charge)) {
+            $this->charges->removeElement($charge);
+            // set the owning side to null (unless already changed)
+            if ($charge->getUser() === $this) {
+                $charge->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

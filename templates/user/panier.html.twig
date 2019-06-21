@@ -30,13 +30,38 @@
         </h5>
         <div class="panier-link">
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                    <div>
+                        <h5>Adresse de livraison</h5>
+                        <p> {{ user.nom }} , {{ user.firstName }} </p>
+                        <p> {{ user.address }} , {{ user.city }} </p>
+                        <p> {{ user.zipcode }} </p>
+                    </div>
+
+
                 <div>
-                    <h5>Adresse de livraison</h5>
-                    <p> {{ user.nom }} , {{ user.firstName }} </p>
-                    <p> {{ user.address }} , {{ user.city }} </p>
-                    <p> {{ user.zipcode }} </p>
+                    <form action="{{ path('payment') }}" method="post" id="payment-form">
+                        <div class="form-group">
+                            <label for="card-element">
+                                Credit or debit card
+                            </label>
+                            <div id="card-element">
+                                <!-- A Stripe Element will be inserted here. -->
+                            </div>
+
+                            <div id="payment-request-button">
+                                <!-- A Stripe Element will be inserted here. -->
+                            </div>
+
+                            <!-- Used to display form errors. -->
+                            <div id="card-errors" role="alert"></div>
+                        </div>
+
+                        <button class="btn submitt">Submit Payment</button>
+                    </form>
                 </div>
-                <a href="" class="btn submitt">checkout</a>
+
+
             {% else %}
                 <a class="nav-link" href="{{ path('security_login') }}" data-toggle="modal"
                    data-target="#connexion">Identifiez-vous pour proceder au paiement</a>
@@ -45,6 +70,12 @@
             {% endif %}
         </div>
     {% endif %}
+
+{% endblock %}
+
+{% block final_javascripts %}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{{ asset('script/payment.js') }}"></script>
 
 {% endblock %}
 
