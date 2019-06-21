@@ -3,6 +3,11 @@
 
         {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/product.css') }}">
+{% endblock %}
+
 
 {% block content %}
     <div class="container cont_product">

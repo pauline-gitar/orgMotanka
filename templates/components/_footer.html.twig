@@ -1,64 +1,68 @@
+
 <!--footer-->
 <footer class="footer">
     <div class="container">
-        <div class="row bloc3blocs">
-            <div class="bloc3blocs2">
-                <!-- 1er bloc header -->
+            <div class="flex_footer">
+                <!-- 1er bloc footer -->
                 <div class="about">
-
-                </div>
-                <!-- 2ème bloc header -->
-                <div class="categories">
-                    <h3>NOS CATEGORIES</h3>
-                </div>
-                <!-- 3ème bloc subcribe box header -->
-
-
-                <div class="subcribeBox">
-                    <h3>Inscripton à notre newsletter !</h3>
-                    <form id="newsletter" action="public/newsletter.php" method="post" novalidate>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="text" name="email" class="form-control champ" id="email"
-                                   aria-describedby="emailHelp" placeholder="Entrer votre email">
-                        </div>
-                        <div class="form-group">
-                            <label for="prenom">Prénom</label>
-                            <input type="text" name="first_name" class="form-control champ" id="prenom"
-                                   placeholder="Prénom">
-                        </div>
-                        <div class="form-group">
-                            <label for="nom">Nom</label>
-                            <input type="text" name="nom" class="form-control champ" id="nom" placeholder="Nom">
-                        </div>
-                        <button type="submit" id="envoi" class="btn btn-default">Envoyer</button>
-                    </form>
-                </div>
-            </div>
-            <!--All right-->
-            <div class="allright">
-                <div class="row">
-                    <div class="col-sm-6 col-xs-12">
-                        <p> © 2019 <a href="#">Organisation Motanka</a>. All rights reserved.</p>
+                    <div class="logo_flex">
+                        <a class="img_header">
+                            <img src="{{ asset('images/logo_Motanka.png') }}" id="logoFooter">
+                        </a>
                     </div>
-
-                    <div class="col-sm-6 col-xs-12">
+                        <div class="socialIcon">
                         <ul class="list-social-icon list-social-icon-footer">
                             <li>
-                                <a href="#" class="facebook">
-                                    <i class="fa fa-facebook"></i>
+                                <a href="https://www.facebook.com/OrganisationMotanka/" class="facebook">
+                                    <i class="fab fa-facebook-f"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="mail">
-                                    <i class="fa fa-facebook"></i>
+                                <a href="https://www.facebook.com/pg/OrganisationMotanka/about/?ref=page_internal" class="mail">
+                                    <i class="fas fa-envelope"></i>
                                 </a>
                             </li>
-
                         </ul>
+                        </div>
+                     </div>
+                <!-- 2ème bloc footer -->
+            <div class="categories">
+
+                <ul class="listCat">
+                    <li><a {# class="nav-link" href="{{ path('') }}"#}>aide</a></li>
+                    <li><a {# href="{{ path('') }}"#}>contact</a></li>
+                    <li><a {# href="{{ path('') }}"#}>vendre</a></li>
+                    <li><a href="{{ path('product') }}">boutique</a></li>
+                </ul>
+            </div>
+                <!-- 3ème bloc subcribe box footer -->
+
+
+                {% block content %}
+                    <div class="nwslttr">
+                        <div class="row">
+                            <div class="col-xs-8 col-xs-push-2">
+                                {% for message in app.flashes('notice') %}
+                                    <div class="alert alert-success">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                <h3>newsletter</h3>
+                                {{ form(form, {attr:{novalidate: 'novalidate', action: path('newsletter')}}) }}
+                            </div>
+                        </div>
                     </div>
+                {% endblock %}
+
+            </div>
+
+        <!--All right-->
+        <div class="allright">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12 allrightFirst">
+                    <p> © 2019 <a href="#">Organisation Motanka</a>. All rights reserved.</p>
                 </div>
             </div>
         </div>
+    </div>
 </footer>
-</div>

@@ -178,13 +178,13 @@ class UserController extends AbstractController
             ->add('password', PasswordType::class, [
                 'label' => "Modifier votre mot de passe",
                 'attr' => [
-                    'placeholder' => "••••••••••"
+                    'placeholder' => "Veuillez saisir à nouveau votre mot de passe"
                 ]
             ])
             ->add('confirm_password', PasswordType::class, [
                 'label' => "Confirmez votre mot de passe",
                 'attr' => [
-                    'placeholder' => "••••••••••"
+                    'placeholder' => "Confirmer votre mot de passe"
                 ]
             ])
             ->add('address', TextType::class, [
