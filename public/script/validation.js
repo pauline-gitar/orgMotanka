@@ -1,6 +1,6 @@
 $(function(){
     function parseLoginForm() {
-        $('form[name="formlogin"]').submit(function(e){
+        $('form[name="formlogin"]').submit(function (e) {
             e.preventDefault();
             var data = $(this).serialize();
 
@@ -10,13 +10,13 @@ $(function(){
                 url: action,
                 type: 'post',
                 data: data,
-                xhr: function() {
+                xhr: function () {
                     return xhr;
                 },
-                success:  function(html){
+                success: function (html) {
                     var url = xhr.responseURL;
-                    if( url.indexOf( action) === -1){
-                        window.location.href = url;
+                    if (url.indexOf(action) === -1) {
+                        window.location.reload();
                         return;
                     }
                     $('#connexion .modal-body').html(html);
@@ -25,6 +25,7 @@ $(function(){
                 }
             });
         });
-
     }
+        parseLoginForm();
+
 });

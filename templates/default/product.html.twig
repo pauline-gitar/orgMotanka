@@ -24,7 +24,7 @@
                             <a href="{{ path('product_details', {
                                 'slug' : product.slug
                             }) }}" class="btn btn-default">Voir le detail</a>
-                            <a href="" class="btn btn-default">Ajouter au panier</a>
+                            <a href="{{ path('ajouter',{ 'id' :  product.id  }) }}" class="btn btn-default">Ajouter au panier</a>
                             </div>
                         </div>
                     </div>
