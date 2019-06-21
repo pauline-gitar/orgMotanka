@@ -1,0 +1,53 @@
+{% extends 'layout.html.twig' %}
+
+{% set total = 0 %}
+
+{% block content %}
+    {% if product is empty %}
+        <h1>Votre panier est vide</h1>
+    {% else %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">id produit</th>
+                <th scope="col">nom du produit</th>
+                <th scope="col">prix</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in product %}
+                <tr>
+                    <th scope="row">{{ product.id }}</th>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.price }} €</td>
+                </tr>
+                {% set total = total + product.price %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <h5 class="float-right">
+            Total = {{ total }} euros
+        </h5>
+        <div class="panier-link">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div>
+                    <h5>Adresse de livraison</h5>
+                    <p> {{ user.nom }} , {{ user.firstName }} </p>
+                    <p> {{ user.address }} , {{ user.city }} </p>
+                    <p> {{ user.zipcode }} </p>
+                </div>
+                <a href="" class="btn submitt">checkout</a>
+            {% else %}
+                <a class="nav-link" href="{{ path('security_login') }}" data-toggle="modal"
+                   data-target="#connexion">Identifiez-vous pour proceder au paiement</a>
+                <br>
+                <a href="">Inscrivez-vous pour proceder au paiement</a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+{% block page_title %}
+
+{% endblock %}

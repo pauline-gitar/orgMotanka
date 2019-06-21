@@ -278,3 +278,10 @@ a:active { color: var(--rouge) ; font-size: 1.1rem;}
 .titres{
     border: green 1px solid;
 }
+
+
+
+.panier-link a:link {color: var(--rouge) ; font-size: 1rem;}
+.panier-link a:visited { color: #565656 ; font-size: 1rem;}
+.panier-link a:hover { color: var(--rouge) ; font-size: 1rem;}
+.panier-link a:active { color: var(--rouge) ; font-size: 1rem;}
