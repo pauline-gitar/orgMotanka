@@ -14,9 +14,9 @@
 
     <h2 class="title_profil">Bonjour {{ user.firstName }} {{ user.nom }}</h2>
 
-    <div>
+    <div class="payment">
 
-        <form action="payment.php" method="post" id="payment-form">
+        <form action="/charge" method="post" id="payment-form">
             <div class="form-group">
                 <label for="card-element">
                     Credit or debit card
@@ -40,6 +40,16 @@
 {% endblock %}
 
 {% block final_javascripts %}
+
+    <script src="https://checkout.stripe.com/checkout.js"
+            class="stripe-button"
+            data-key="pk_Fhlzwtm9SCx6Uxww5fNXX8CUbwwAc"
+            data-amount="2000"
+            data-name="Demo Site"
+            data-description="2 widgets ($20.00)"
+            data-image="/128x128.png">
+    </script>
+
     <script src="https://js.stripe.com/v3/"></script>
     <script src="{{ asset('script/payment.js') }}"></script>
 

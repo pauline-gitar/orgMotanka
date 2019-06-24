@@ -167,7 +167,9 @@ a:active {
 /*********************MEDIA QUERIES HEADER MENU***********************/
 @media (max-width: 860px) /*affichage tablette*/
 {       #logo {
-            display: inline-block !important;
+        flex-direction: column;
+        text-align: center;
+        padding-top: 20px;
             }
 }
 
@@ -178,6 +180,9 @@ a:active {
     }
     .logo_flex {
         flex-direction: column;
+        text-align: center;
+        padding-top: 20px;
+
     }
     .flex_mnu_header{
         flex-direction: row;

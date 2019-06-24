@@ -1,19 +1,41 @@
 <div class="container flex_nav">
-<div class="flex_nav_main">
-<ul class="nav flex_nav_main">
-    <li class="nav-item">
-        <a class="nav-link active" href="{{ path('home') }}">Qui Sommes-nous ?</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ path('home') }}#nos-actions">Nos actions</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ path('sellers') }}">Nos vendeurs</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ path('product') }}">Le shop</a>
+    <div class="flex_nav_main">
+        <ul class="nav flex_nav_main">
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ path('home') }}">Qui Sommes-nous ?</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('home') }}#nos-actions">Nos actions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('sellers') }}">Nos vendeurs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('product') }}">Le shop</a>
+            </li>
+
+{#            <li class="nav-item dropdown">#}
+
+{#                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"#}
+{#                   aria-haspopup="true" aria-expanded="false">#}
+{#                    Dropdown#}
+{#                </a>#}
+
+{#                <div class="dropdown-menu" aria-labelledby="navbarDropdown">#}
+
+{#                    <a class="dropdown-item" href="#">Action</a>#}
+{#                    <a class="dropdown-item" href="#">Another action</a>#}
+{#                    <div class="dropdown-divider"></div>#}
+{#                    <a class="dropdown-item" href="#">Something else here</a>#}
+
+{#                    {% for categorie in categories %}#}
+{#                    <a href="{{ path('default_categorie', {#}
+{#                    'slug' : categorie.slug }) }}">{{ categorie.slug }}</a>#}
+{#                    {% endfor %}#}
+
+    </div>
     </li>
 
-</ul>
+    </ul>
 </div>
 </div> <!-- fin du container -->

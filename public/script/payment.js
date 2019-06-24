@@ -1,3 +1,4 @@
+
 // Create a Stripe client.
 var stripe = Stripe('pk_test_C6KzpxOIOVd2CPvNjubFWqWf00gvwumIEJ');
 

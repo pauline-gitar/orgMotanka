@@ -1,5 +1,15 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/payment.css') }}">
+
+{% endblock %}
+
+{% block page_title %}
+Votre panier
+{% endblock %}
+
 {% set total = 0 %}
 
 {% block content %}
@@ -36,7 +46,32 @@
                     <p> {{ user.address }} , {{ user.city }} </p>
                     <p> {{ user.zipcode }} </p>
                 </div>
-                <a href="" class="btn submitt">checkout</a>
+
+
+                <div class="payment">
+
+                    <form action="payment.php" method="post" id="payment-form">
+                        <div class="form-group">
+                            <label for="card-element">
+                                Carte de crédit
+                            </label>
+                            <div id="card-element">
+                                <!-- A Stripe Element will be inserted here. -->
+                            </div>
+
+                            <div id="payment-request-button">
+                                <!-- A Stripe Element will be inserted here. -->
+                            </div>
+
+                            <!-- Used to display form errors. -->
+                            <div id="card-errors" role="alert"></div>
+                        </div>
+
+                        <button class="btn submitt">Submit Payment</button>
+                    </form>
+                </div>
+
+
             {% else %}
                 <a class="nav-link" href="{{ path('security_login') }}" data-toggle="modal"
                    data-target="#connexion">Identifiez-vous pour proceder au paiement</a>
@@ -46,8 +81,13 @@
         </div>
     {% endif %}
 
-{% endblock %}
-
-{% block page_title %}
 
 {% endblock %}
+
+{% block final_javascripts %}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{{ asset('script/payment.js') }}"></script>
+
+{% endblock %}
+
+

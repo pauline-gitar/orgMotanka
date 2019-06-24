@@ -3,10 +3,13 @@
 
 {% block stylesheets %}
     {{ parent() }}
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />{% endblock %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ asset('css/seller.css') }}">
+
+{% endblock %}
 
         {% block page_title %}
-
+{{ seller.firstName }} {{ seller.lastName }}
         {% endblock %}
 
 
@@ -19,15 +22,16 @@
                 <div class="col-md-6">
                     <a href="{{ asset('images/seller/' ~ seller.picture) }}"><img src="{{ asset('images/seller/' ~ seller.picture) }}" class="card-img" alt="{{ seller.firstName }}-{{ seller.lastName }}"/></a>
                 </div>
-                <div class="col-md-4 blockText">
+                <div class="col-md-6 blockText">
                     <div class="card-body crd">
                         <h5 class="card-title">{{ seller.firstName }} {{ seller.lastName }}</h5>
                         <p class="card-text">{{ seller.description | raw }}</p>
                     <h6> Ses produits : </h6>
                     <p>
-                    <ul>
-                    <li>Produits 1</li>
-                    <li>Produits 2</li>
+                    <ul class="seller_list">
+                    {% for product in product %}
+                    <li class="seller_list">- {{ product.title }}</li>
+                    {% endfor %}
                     </ul></p id="localisation" value="{{ seller.localisation }}">
                     {{ seller.firstName }} {{ seller.lastName }} vit dans la ville de
 {{ seller.city }}
