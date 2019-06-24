@@ -39,7 +39,7 @@ class Payment extends AbstractController
             return $product->getPrice();
         }, $products));
 
-        dump($user, $token, $nom, $email);
+
 
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($nom) && !empty($token)) {
@@ -64,7 +64,7 @@ class Payment extends AbstractController
                 ]
             ]);
 
-            dump($charge, $session, $products, $total, $iduser);
+
 
 
         }
@@ -76,7 +76,7 @@ class Payment extends AbstractController
         $mycharge->setTotal($total);
         $mycharge->setToken($charge['id']);
         $mycharge->setDescription(implode(',', $session->get('product-ids', $productIds)));
-        dump($mycharge);
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($mycharge);
         $em->flush();

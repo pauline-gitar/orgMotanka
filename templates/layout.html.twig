@@ -12,8 +12,8 @@
 {% block body %}
 
     {{ render(controller('App\\Controller\\HeaderController::header')) }}
-    {#    {{ render(controller('App\\Controller\\NavController::category')) }}#}
-    {% include 'components/_nav.html.twig' %}
+        {{ render(controller('App\\Controller\\NavController::category')) }}
+
 
     <div class="container white"> <!-- Ouverture container div white Main -->
 

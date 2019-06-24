@@ -171,8 +171,13 @@ a:active {
     color: black!important;
 }
 dropdown-links{
-    color: #A75756!important;
+    color: black!important;
 }
+
+.nav-panier a:link {color: var(--rouge) ; font-size: 1rem;}
+.nav-panier a:visited { color: #565656 ; font-size: 1rem;}
+.nav-panier a:hover { color: var(--rouge) ; font-size: 1rem;}
+.nav-panier a:active { color: var(--rouge) ; font-size: 1rem;}
 
 /*********************MEDIA QUERIES HEADER MENU***********************/
 @media (max-width: 860px) /*affichage tablette*/

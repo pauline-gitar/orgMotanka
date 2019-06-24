@@ -27,8 +27,9 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/product", name="product")
+     * @Route("/product/category/{slug}", name="product_category")
      */
-    public function viewProduct()
+    public function viewProduct(Category $category = null)
     {
         /*
          * Fonction pour le carousel dans le main de la page d'accueil
@@ -36,7 +37,7 @@ class ProductController extends AbstractController
          */
         $products =$this->getDoctrine()
             ->getRepository(Product::class)
-            ->findAll();
+            ->findBy($category ? ['category' => $category] : []);
         return $this->render('default/product.html.twig', [
             'products' => $products,
         ]);
