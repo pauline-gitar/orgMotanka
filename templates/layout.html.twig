@@ -1,12 +1,10 @@
 {% extends "base.html.twig" %}
 
-
+{#{% set categories = categorie_repository.findAll() %} #}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900%7COpen+Sans+Condensed:300,700%7CPlayfair+Display+SC%7CPlayfair+Display:400,400i,700,700i,900,900i&display=swap"
-          rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900%7COpen+Sans+Condensed:300,700%7CPlayfair+Display+SC%7CPlayfair+Display:400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 {% endblock %}
@@ -14,23 +12,21 @@
 {% block body %}
 
     {{ render(controller('App\\Controller\\HeaderController::header')) }}
+    {#    {{ render(controller('App\\Controller\\NavController::category')) }}#}
     {% include 'components/_nav.html.twig' %}
 
     <div class="container white"> <!-- Ouverture container div white Main -->
 
-        {% block content '' %}
+    {% block content '' %}
 
     </div> <!-- FIN DIV white du Main -->
     {{ render(controller('App\\Controller\\NewsletterController::newSubscriber')) }}
-
 {% endblock %}
 
 {% block javascripts %}
     <!--script files-->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="

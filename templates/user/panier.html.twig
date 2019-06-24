@@ -1,5 +1,15 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/payment.css') }}">
+
+{% endblock %}
+
+{% block page_title %}
+Votre panier
+{% endblock %}
+
 {% set total = 0 %}
 
 {% block content %}
@@ -35,7 +45,6 @@
         </h2>
         <div class="panier-link">
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-
                 <div>
                     <h5>Adresse de livraison</h5>
                     <p> {{ user.nom }} , {{ user.firstName }} </p>
@@ -83,9 +92,5 @@
 {% block final_javascripts %}
     <script src="https://js.stripe.com/v3/"></script>
     <script src="{{ asset('script/payment.js') }}"></script>
-
-{% endblock %}
-
-{% block page_title %}
 
 {% endblock %}

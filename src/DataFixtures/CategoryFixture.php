@@ -16,32 +16,55 @@ class CategoryFixture extends Fixture
     {
         // Clothes
         $category = new Category();
-        $category->setName("Clothes")
+        $category->setName("Vêtements")
                  ->setSlug('clothes');
         $manager->persist($category);
 
+
         // Decoration
         $category = new Category();
-        $category->setName("Decoration")
+        $category->setName("Décoration")
             ->setSlug('decoration');
         $manager->persist($category);
 
+
         // Food
         $category = new Category();
-        $category->setName("Food")
+        $category->setName("Alimentation")
             ->setSlug('food');
         $manager->persist($category);
 
+
         // Toy
         $category = new Category();
-        $category->setName("Toys")
+        $category->setName("Jouet")
             ->setSlug('toys');
         $manager->persist($category);
+
+
+        // Bijoux
+        $category = new Category();
+        $category->setName("Bijoux")
+            ->setSlug('jewel');
+        $manager->persist($category);
+
+
+        // Bijoux
+        $category = new Category();
+        $category->setName("Produits de soin")
+            ->setSlug('care-products');
+        $manager->persist($category);
+
+
+        // Autre
+        $category = new Category();
+        $category->setName("Autre")
+            ->setSlug('other');
+        $manager->persist($category);
+
 
         # Déclenche l'execution de la requète.
         $manager->flush();
 
-        # Partage du membre
-        $this->addReference(self::PRODUCT_CATEGORY_REFERENCE, $category);
     }
 }

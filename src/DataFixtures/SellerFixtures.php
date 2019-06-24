@@ -10,7 +10,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class SellerFixtures extends Fixture
 {
-    const PRODUCT_SELLER_REFERENCE = 'product-seller';
 
     public function load(ObjectManager $manager)
     {
@@ -19,7 +18,7 @@ class SellerFixtures extends Fixture
         $seller->setFirstName("Natacha")
                 ->setLastName("Evtouchenko")
                 ->setDescription("Natasha, 65 ans,  reçoit une pension mensuelle de 1 200 hryvnias, mais son traitement pour le cœur coûte 750 hryvnias par mois. Natacha touche donc 38 euros de retraite par mois pour 38 ans de travail ! Elle ne peut pas survivre avec ça. Elle tente de gagner un peu plus en cultivant des pommes-de-terre pour les vendre et surtout pour se nourrir.
-La palissade de la maison de Natacha est criblée d'éclats d’obus. Elle vit à Avdiyivka, un des points chauds de ce conflit qui a été ravagé par les tirs depuis 5 ans.
+                La palissade de la maison de Natacha est criblée d'éclats d’obus. Elle vit à Avdiyivka, un des points chauds de ce conflit qui a été ravagé par les tirs depuis 5 ans.
 Natacha n’est pas partie car elle ne savait pas où aller et n’en avait pas les moyens. Sa maison est partiellement détruite, et n’est plus habitable. Sans revenu Natasha ne pourra jamais retrouver son domicile dans lequel elle a investie toute sa vie durant.
 En dehors de l’amour de son jardin, Natacha est une excellente couturière et propose ses différentes créations aussi bien pour la décoration intérieur : coussin, literie, rideau , que des vêtements originaux aux teintes ukrainiennes traditionnelle et moderne quand elle se laisse aller à sa créativité propre.
 ")
@@ -79,6 +78,5 @@ Nikolai c’est lancer dans la réalisation de bougie en cire d’abeille pure e
 
         $manager->flush();
 
-        $this->addReference(self::PRODUCT_SELLER_REFERENCE, $seller);
     }
 }

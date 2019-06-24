@@ -4,7 +4,9 @@
 namespace App\Controller;
 
 
+use App\Entity\Product;
 use App\Entity\Seller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -153,6 +155,7 @@ class SellerController extends AbstractController
 
     // affichage d'un vendeur
     /**
+     *
      * @Route("/sellers/{slug<[a-zA-Z0-9\-_\/]+>}",
      *     defaults={"slug"},
      *     methods={"GET"},
@@ -165,30 +168,17 @@ class SellerController extends AbstractController
             ->getRepository(Seller::class)
             ->findOneBy(['slug' => $slug]);
 
-        // crée un tableau JSON
+        $product = $this->getDoctrine()
+                ->getRepository(Product::class)
+                 ->findBy(['seller'=> $seller->getId()]);
+
         // 1 crée un tableau de données
          $localisation = $seller->getLocalisation();
 
-       // $localisation = ['gps' => $seller->getLocalisation(),
-         //                 'city' => $seller->getCity()];
-
-
-        // 2 convertir en json
-      // $localisation_json = json_encode($localisation);
-
-        // 3 var_dump pour verifier les infos
-        // var_dump($localisation);
-
-        //$service_localisation_json = 'service_localisation.json';
-        //$fichier = fopen($service_localisation_json, 'w+');
-        //file_put_contents('service_localisation.json', 'gps_localisation'.var_export($localisation_json, true), FILE_APPEND);
-
-        // fwrite($fichier, $localisation);
-        // fclose($fichier);
-
         return $this->render('/default/seller_details.html.twig', [
             'seller' => $seller,
-            'localisation' => $localisation
+            'localisation' => $localisation,
+            'product' => $product
         ]);
     }
 
