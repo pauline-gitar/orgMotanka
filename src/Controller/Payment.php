@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\Product;
+use App\Entity\Charge as MyCharge;
 use Stripe\Charge;
 use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,6 +26,7 @@ class Payment extends AbstractController
         $token = $_POST;
         $nom = $user->getNom();
         $email = $user->getEmail();
+        $iduser = $user->getId();
 //        $total = 0;
         $productIds = $session->get('product-ids', []);
 
@@ -36,12 +38,6 @@ class Payment extends AbstractController
         $total = array_sum(array_map(function ($product){
             return $product->getPrice();
         }, $products));
-
-//            foreach($product as $k => $subArray){
-//                foreach ($subArray as $id => $value){
-//                    $sumArray[$price]
-//                }
-//            }
 
         dump($user, $token, $nom, $email);
 
@@ -68,8 +64,24 @@ class Payment extends AbstractController
                 ]
             ]);
 
-            dump($charge, $session, $products, $total);
+            dump($charge, $session, $products, $total, $iduser);
+
+
         }
+
+        //Ajout des informations de vente en BDD
+
+        $mycharge = new MyCharge();
+        $mycharge->setUser($user);
+        $mycharge->setTotal($total);
+        $mycharge->setToken($charge['id']);
+        $mycharge->setDescription(implode(',', $session->get('product-ids', $productIds)));
+        dump($mycharge);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($mycharge);
+        $em->flush();
+
+
 
 
 

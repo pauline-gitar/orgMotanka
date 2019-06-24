@@ -1,3 +1,4 @@
+
 <header class="home-header">
     <div class="container">
         <div class="header_flex">
@@ -63,7 +64,23 @@
                         {% endif %}
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('panier') }}"><i class="fas fa-shopping-basket"></i></a>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle pull-left" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-shopping-basket"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                    {% if product is empty %}
+                                        <h5 class="dropdown-item" href="#">Votre panier est vide</h5>
+                                    {% else %}
+                                        {% for product in product %}
+                                            <p class="dropdown-item dropdown-p" href="#">{{ product.title }}  x1</p>
+                                        {% endfor %}
+                                        <a class="dropdown-item dropdown-links" href="{{ path('panier') }}">Voir mon panier</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {#                            <a class="nav-link" href="{{ path('panier') }}"><i class="fas fa-shopping-basket"></i></a>#}
                         </li>
                     </ul>
                 </div>

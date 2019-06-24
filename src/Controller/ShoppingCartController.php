@@ -26,7 +26,7 @@ class ShoppingCartController extends AbstractController
             $productIds[] = $id;
             $session->set('product-ids', $productIds);
         }
-        return $this->redirectToRoute('panier');
+        return $this->redirectToRoute('product');
     }
 
     /**

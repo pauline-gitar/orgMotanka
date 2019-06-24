@@ -6,6 +6,7 @@
     {% if product is empty %}
         <h1>Votre panier est vide</h1>
     {% else %}
+        <h5>Votre panier</h5>
         <table class="table">
             <thead>
             <tr>
@@ -20,31 +21,36 @@
                     <th scope="row">{{ product.id }}</th>
                     <td>{{ product.title }}</td>
                     <td>{{ product.price }} €</td>
+                    <td><a href="{{ path('supprimer',{ 'id' : product.id  }) }}" class="submitt"><i
+                                    class="fas fa-times"></i>
+
+                        </a></td>
                 </tr>
                 {% set total = total + product.price %}
             {% endfor %}
             </tbody>
         </table>
-        <h5 class="float-right">
-            Total = {{ total }} euros
-        </h5>
+        <h2>
+            Total <b>{{ total }}</b> euros
+        </h2>
         <div class="panier-link">
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-                    <div>
-                        <h5>Adresse de livraison</h5>
-                        <p> {{ user.nom }} , {{ user.firstName }} </p>
-                        <p> {{ user.address }} , {{ user.city }} </p>
-                        <p> {{ user.zipcode }} </p>
-                    </div>
-
-
+                <div>
+                    <h5>Adresse de livraison</h5>
+                    <p> {{ user.nom }} , {{ user.firstName }} </p>
+                    <p> {{ user.address }} , {{ user.city }} </p>
+                    <p> {{ user.zipcode }} </p>
+                </div>
+                <a class="btn submitt" href="{{ path('user_profil') }}">Modifier vos coordonnees</a>
+                <br>
+                <br>
                 <div>
                     <form action="{{ path('payment') }}" method="post" id="payment-form">
                         <div class="form-group">
-                            <label for="card-element">
-                                Credit or debit card
-                            </label>
+                            <h5 for="card-element">
+                                Information de paiement
+                            </h5>
                             <div id="card-element">
                                 <!-- A Stripe Element will be inserted here. -->
                             </div>
@@ -57,16 +63,17 @@
                             <div id="card-errors" role="alert"></div>
                         </div>
 
-                        <button class="btn submitt">Submit Payment</button>
+                        <button class="btn submitt">Proceder au paiement</button>
                     </form>
                 </div>
 
 
             {% else %}
-                <a class="nav-link" href="{{ path('security_login') }}" data-toggle="modal"
-                   data-target="#connexion">Identifiez-vous pour proceder au paiement</a>
+                <a class="btn submitt" href="{{ path('security_login') }}" data-toggle="modal"
+                   data-target="#connexion">Connexion</a>
                 <br>
-                <a href="">Inscrivez-vous pour proceder au paiement</a>
+                <br>
+                <a href="{{ path('user_inscription') }}" class="btn submitt">Inscription</a>
             {% endif %}
         </div>
     {% endif %}

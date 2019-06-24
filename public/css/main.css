@@ -164,6 +164,13 @@ a:active {
     margin:auto 0;
 }
 
+.dropdown-p{
+    color: black!important;
+}
+dropdown-links{
+    color: #A75756!important;
+}
+
 /*********************MEDIA QUERIES HEADER MENU***********************/
 @media (max-width: 860px) /*affichage tablette*/
 {       #logo {

@@ -69,7 +69,7 @@ class UserController extends AbstractController
                 ]
             ])
             ->add('confirm_password', PasswordType::class, [
-                'label' => "Confirmez votre mot de passe",
+                'label' => "Confirmez mot de passe",
                 'attr' => [
                     'placeholder' => "Confirmez password"
                 ]
@@ -128,7 +128,7 @@ class UserController extends AbstractController
                 'Félicitations, vous pouvez vous connecter');
 
             # redirection
-            return $this->redirectToRoute('security_login');
+            return $this->redirectToRoute('product');
 
         } // Fin du IF $form is submitted
 
