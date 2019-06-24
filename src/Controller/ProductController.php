@@ -24,12 +24,14 @@ class ProductController extends AbstractController
 {
 
     use ProductTrait;
+
     /**
      * @Route("/product", name="product")
      */
     public function viewProduct()
     {
         /*
+         * Fonction pour le carousel dans le main de la page d'accueil
          * Recuperation de Products dans la bdd
          */
         $products =$this->getDoctrine()
@@ -39,6 +41,20 @@ class ProductController extends AbstractController
             'products' => $products,
         ]);
     }
+
+     public function viewLastProduct()
+     {
+         /*
+          * Fonction pour le carousel dans le main de la page d'accueil
+          * Recuperation de Products dans la bdd
+          */
+         $products =$this->getDoctrine()
+             ->getRepository(Product::class)
+             ->findBy([], ['date_creation' => 'DESC'], 5);
+         return $this->render('home/carroussel_product.html.twig', [
+             'lastProducts' => $products,
+         ]);
+     }
 
     /**
      * @Route("/product/{slug<[a-zA-Z0-9\-_\/]+>}",
@@ -56,7 +72,7 @@ class ProductController extends AbstractController
             'product' => $product,
         ]);
     }
-
+    
     /**
      * @Route("/product_creation", name="product-creation")
      */

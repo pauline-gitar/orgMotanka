@@ -63,7 +63,7 @@ class NewsletterController extends AbstractController
             $em->flush();
 
             # Notification
-            $this->addFlash('notice',
+            $this->addFlash('footer.notice',
                 'Félicitation, vous êtes inscrit à la newsletter !');
 
             # redirection

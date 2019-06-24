@@ -10,7 +10,7 @@
                             <img src="{{ asset('images/logo_Motanka.png') }}" id="logoFooter">
                         </a>
                     </div>
-                        <div class="socialIcon">
+                    <div class="socialIcon">
                         <ul class="list-social-icon list-social-icon-footer">
                             <li>
                                 <a href="https://www.facebook.com/OrganisationMotanka/" class="facebook">
@@ -23,26 +23,23 @@
                                 </a>
                             </li>
                         </ul>
-                        </div>
-                     </div>
+                    </div>
+                </div>
                 <!-- 2ème bloc footer -->
-            <div class="categories">
-
-                <ul class="listCat">
-                    <li><a {# class="nav-link" href="{{ path('') }}"#}>aide</a></li>
-                    <li><a {# href="{{ path('') }}"#}>contact</a></li>
-                    <li><a {# href="{{ path('') }}"#}>vendre</a></li>
-                    <li><a href="{{ path('product') }}">boutique</a></li>
-                </ul>
-            </div>
+                <div class="categories">
+                    <ul class="listCat">
+                        <li><a href="{{ path('contact') }}">aide</a></li>
+                        <li><a href="{{ path('contact') }}">contact</a></li>
+                        <li><a href="{{ path('contact') }}">vendre</a></li>
+                        <li><a href="{{ path('product') }}">boutique</a></li>
+                    </ul>
+                </div>
                 <!-- 3ème bloc subcribe box footer -->
-
-
                 {% block content %}
                     <div class="nwslttr">
-                        <div class="row">
-                            <div class="col-xs-8 col-xs-push-2">
-                                {% for message in app.flashes('notice') %}
+                        <div class="row nwslttr1">
+                            <div class="col-xs-8 col-xs-push-2 nwslttr2">
+                                {% for message in app.flashes('footer.notice') %}
                                     <div class="alert alert-success">
                                         {{ message }}
                                     </div>
