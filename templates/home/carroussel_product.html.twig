@@ -1,0 +1,6 @@
+{% for product in lastProducts %}
+    <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+        <img class="d-block w-100 imgCarousel" src="{{ asset('images/product/' ~ product.picture) }}"
+        alt="First slide">
+    </div>
+{% endfor %}
